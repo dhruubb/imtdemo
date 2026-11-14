@@ -3,171 +3,214 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#F1F2F4">
+<meta name="theme-color" content="#EDF0F5">
 <title>IMT Production</title>
 <style>
 @font-face{font-family:"SFD";src:url(data:font/woff;base64,__F400__) format("woff");font-weight:400;font-display:swap}
 @font-face{font-family:"SFD";src:url(data:font/woff;base64,__F500__) format("woff");font-weight:500 600;font-display:swap}
-@font-face{font-family:"SFD";src:url(data:font/woff;base64,__F700__) format("woff");font-weight:700;font-display:swap}
+@font-face{font-family:"SFD";src:url(data:font/woff;base64,__F700__) format("woff");font-weight:700 800;font-display:swap}
 :root{
-  --bg:#F1F2F4;--surface:#FFFFFF;--ink:#16202A;--ink2:#56616C;--ink3:#8D96A0;--line:#E4E7EB;--fill:#F5F6F8;
-  --blue:#1E44C8;--blue-soft:#E9EEFC;
-  --red:#C4372C;--red-soft:#FCEBE9;
-  --amber:#A86F00;--amber-soft:#FBF1DA;
-  --green:#28834B;--green-soft:#E4F3EA;
-  --r:16px;--tab:64px;
+  --bg:#EDF0F5;--surface:#FFFFFF;--ink:#121A27;--ink2:#566170;--ink3:#8C95A2;--line:#E6E9EF;--fill:#F4F6F9;
+  --cobalt:#18287A;--cobalt2:#22389E;
+  --blue:#2A4FE0;--blue-soft:#E8EDFD;
+  --red:#D23C2F;--red-soft:#FCEBE9;
+  --amber:#B57400;--amber-soft:#FCF1D9;
+  --green:#21894B;--green-soft:#E2F4E9;
+  --wa:#0B6B5C;
+  --r:20px;--tab:66px;
   --safe-b:env(safe-area-inset-bottom,0px);--safe-t:env(safe-area-inset-top,0px);
+  --shadow:0 1px 2px rgba(18,26,39,.04),0 8px 24px -12px rgba(18,26,39,.12);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
-body{font-family:"SFD",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.35;-webkit-font-smoothing:antialiased;letter-spacing:-.005em}
+body{font-family:"SFD",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.35;-webkit-font-smoothing:antialiased;letter-spacing:-.006em}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
 input{font:inherit;color:inherit}
-.num{font-variant-numeric:tabular-nums}
+.num,.n{font-variant-numeric:tabular-nums}
 svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
 svg.i.s{width:18px;height:18px}
-:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:8px}
+svg.i.xs{width:14px;height:14px}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:10px}
 
-/* layout */
-.app{min-height:100vh}
 .side{display:none}
-main{padding:calc(var(--safe-t) + 12px) 16px calc(var(--tab) + var(--safe-b) + 28px);max-width:640px;margin:0 auto}
+main{padding:calc(var(--safe-t) + 14px) 16px calc(var(--tab) + var(--safe-b) + 92px);max-width:640px;margin:0 auto}
 .view{display:none}
-.view.on{display:block;animation:in .28s ease-out}
-@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.view.on{display:block}
 
-.top{display:flex;align-items:center;justify-content:space-between;height:36px;margin-bottom:6px}
-.co{font-size:15px;font-weight:600;color:var(--ink2)}
-.demo{font-size:12px;font-weight:500;color:var(--ink2);background:var(--surface);border:1px solid var(--line);padding:4px 10px;border-radius:20px}
-h1{font-size:34px;font-weight:700;letter-spacing:-.025em;line-height:1.1}
-.sub{color:var(--ink2);font-size:15px;margin-top:4px}
-.head{margin:4px 0 22px}
-h2{font-size:20px;font-weight:700;letter-spacing:-.015em;margin:28px 4px 10px;display:flex;justify-content:space-between;align-items:baseline}
-h2 small{font-size:14px;font-weight:500;color:var(--ink3);letter-spacing:0}
+/* header */
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.hello .g{font-size:15px;color:var(--ink2);font-weight:500}
+.hello h1{font-size:30px;font-weight:700;letter-spacing:-.028em;line-height:1.1;margin-top:1px}
+.avatar{width:42px;height:42px;border-radius:14px;background:var(--cobalt);color:#fff;display:grid;place-items:center;font-weight:700;font-size:13.5px;letter-spacing:.02em;flex:none}
+.pill{font-size:12px;font-weight:600;color:var(--ink2);background:var(--surface);padding:5px 10px;border-radius:20px;box-shadow:var(--shadow)}
+h2{font-size:21px;font-weight:700;letter-spacing:-.02em;margin:30px 2px 12px;display:flex;justify-content:space-between;align-items:center}
+h2 .more{font-size:15px;font-weight:600;color:var(--blue);letter-spacing:0}
+h2 .cnt{font-size:14px;font-weight:600;color:var(--ink3);letter-spacing:0}
 
-/* grouped list */
-.group{background:var(--surface);border-radius:var(--r);overflow:hidden}
-.row{display:flex;align-items:center;gap:12px;padding:13px 14px;position:relative;width:100%;text-align:left}
-.row+.row::before{content:"";position:absolute;top:0;left:54px;right:0;height:1px;background:var(--line)}
-.group.flat .row+.row::before{left:14px}
+/* hero */
+.hero{position:relative;overflow:hidden;background:var(--cobalt);color:#fff;border-radius:26px;padding:20px 20px 18px;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:repeating-linear-gradient(115deg,rgba(255,255,255,.07) 0 2px,transparent 2px 13px);-webkit-mask:linear-gradient(100deg,transparent 42%,#000 100%);mask:linear-gradient(100deg,transparent 42%,#000 100%)}
+.hero .lab{font-size:14px;font-weight:500;color:rgba(255,255,255,.72);display:flex;align-items:center;gap:7px}
+.hero .live{width:7px;height:7px;border-radius:50%;background:#6EE7A0;box-shadow:0 0 0 4px rgba(110,231,160,.18)}
+.hero .big{font-size:46px;font-weight:700;letter-spacing:-.04em;line-height:1;margin-top:12px}
+.hero .big small{font-size:22px;font-weight:600;letter-spacing:-.01em;color:rgba(255,255,255,.75);margin-left:3px}
+.hero .cap{font-size:14.5px;color:rgba(255,255,255,.72);margin-top:6px}
+.hero .spark{position:absolute;right:16px;top:20px;width:120px;height:52px}
+.hgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:20px}
+.hgrid>div{background:rgba(255,255,255,.09);border-radius:15px;padding:11px 12px}
+.hgrid .v{font-size:22px;font-weight:700;letter-spacing:-.02em}
+.hgrid .k{font-size:12.5px;color:rgba(255,255,255,.7);margin-top:2px}
+
+/* quick actions */
+.qa{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}
+.qa button{display:flex;flex-direction:column;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:var(--ink2)}
+.qa .qi{width:58px;height:58px;border-radius:19px;background:var(--surface);box-shadow:var(--shadow);display:grid;place-items:center;color:var(--ink);transition:transform .15s}
+.qa button:active .qi{transform:scale(.93)}
+.qa .qi.c{background:var(--blue);color:#fff}
+
+/* cards + lists */
+.card{background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow)}
+.list{background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+.row{display:flex;align-items:center;gap:13px;padding:14px 16px;width:100%;text-align:left;position:relative}
+.row+.row::before{content:"";position:absolute;top:0;left:66px;right:0;height:1px;background:var(--line)}
+.list.flat .row+.row::before{left:16px}
 button.row:active{background:var(--fill)}
-.ic{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex:none}
-.ic svg{width:18px;height:18px}
-.ic.red{background:var(--red-soft);color:var(--red)}
-.ic.amber{background:var(--amber-soft);color:var(--amber)}
-.ic.blue{background:var(--blue-soft);color:var(--blue)}
-.ic.green{background:var(--green-soft);color:var(--green)}
+.ic{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;flex:none}
+.ic svg{width:20px;height:20px}
+.ic.red{background:var(--red-soft);color:var(--red)}.ic.amber{background:var(--amber-soft);color:var(--amber)}.ic.blue{background:var(--blue-soft);color:var(--blue)}.ic.green{background:var(--green-soft);color:var(--green)}
+.mono{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;flex:none;font-weight:700;font-size:13px;letter-spacing:.01em}
 .grow{flex:1;min-width:0}
-.t{font-weight:500;font-size:16px}
-.d{color:var(--ink2);font-size:14px;margin-top:1px}
+.t{font-weight:600;font-size:16px;letter-spacing:-.01em}
+.d{color:var(--ink2);font-size:14px;margin-top:2px}
 .trunc{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.chev{color:#C3C9CF}
+.chev{color:#C3C9D2}
 .end{text-align:right;flex:none}
-.end .t{font-weight:600}
-
-.badge{display:inline-flex;align-items:center;gap:4px;font-size:12.5px;font-weight:600;padding:3px 8px;border-radius:7px;white-space:nowrap}
-.badge.red{background:var(--red-soft);color:var(--red)}
-.badge.amber{background:var(--amber-soft);color:var(--amber)}
-.badge.green{background:var(--green-soft);color:var(--green)}
-.badge.grey{background:var(--fill);color:var(--ink2)}
-
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:14px;font-weight:600;padding:8px 13px;border-radius:10px;background:var(--blue-soft);color:var(--blue);white-space:nowrap;transition:background .15s,color .15s}
-.btn:active{transform:scale(.97)}
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;padding:4px 9px;border-radius:8px;white-space:nowrap}
+.badge.red{background:var(--red-soft);color:var(--red)}.badge.amber{background:var(--amber-soft);color:var(--amber)}.badge.green{background:var(--green-soft);color:var(--green)}.badge.grey{background:var(--fill);color:var(--ink2)}.badge.blue{background:var(--blue-soft);color:var(--blue)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:14px;font-weight:600;padding:8px 14px;border-radius:11px;background:var(--blue-soft);color:var(--blue);white-space:nowrap;transition:background .2s,color .2s,transform .1s}
+.btn:active{transform:scale(.96)}
 .btn.done{background:var(--green-soft);color:var(--green)}
-.btn.solid{background:var(--blue);color:#fff;padding:13px 18px;border-radius:13px;font-size:16px;width:100%}
+.btn.solid{background:var(--blue);color:#fff;padding:14px 18px;border-radius:15px;font-size:16px;width:100%}
+.btn.dark{background:var(--ink);color:#fff}
+.btn.ghost{background:var(--fill);color:var(--ink)}
 
-/* stats */
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.stat{background:var(--surface);border-radius:var(--r);padding:14px 15px 15px;text-align:left}
-.stat .k{display:flex;align-items:center;gap:7px;color:var(--ink2);font-size:14px;font-weight:500}
-.stat .k svg{width:17px;height:17px}
-.stat .v{font-size:30px;font-weight:700;letter-spacing:-.03em;margin-top:8px;line-height:1}
-.stat .v span{font-size:17px;font-weight:600;letter-spacing:0;color:var(--ink2);margin-left:2px}
-.stat .f{font-size:13px;color:var(--ink3);margin-top:6px}
-.stat.red .f{color:var(--red)}
+/* machines rings */
+.rings{display:flex;gap:10px;overflow-x:auto;scroll-padding:0 16px;margin:0 -16px;padding:2px 16px 8px;scrollbar-width:none;scroll-snap-type:x mandatory}
+.rings::-webkit-scrollbar{display:none}
+.mc{flex:none;width:142px;padding:14px;scroll-snap-align:start}
+.mc .ring{position:relative;width:62px;height:62px}
+.mc .ring svg{width:62px;height:62px;transform:rotate(-90deg)}
+.mc .ring b{position:absolute;inset:0;display:grid;place-items:center;font-size:16px;font-weight:700;letter-spacing:-.02em}
+.mc .nm{font-weight:600;font-size:14.5px;margin-top:12px;letter-spacing:-.01em}
+.mc .jb{font-size:13px;color:var(--ink3);margin-top:2px}
+.mc .st{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;margin-top:9px}
+.dot{width:7px;height:7px;border-radius:50%;display:inline-block;flex:none}
 
-/* machines */
-.load{height:6px;border-radius:3px;background:var(--fill);overflow:hidden;margin-top:8px}
-.load i{display:block;height:100%;background:var(--ink);border-radius:3px}
-.dot{width:8px;height:8px;border-radius:50%;flex:none}
-.dot.run{background:var(--green)}.dot.idle{background:var(--ink3)}.dot.setup{background:var(--amber)}
+/* stock */
+.stock{padding:15px 16px}
+.stock+.stock{border-top:1px solid var(--line)}
+.sbar{height:8px;border-radius:4px;background:var(--fill);overflow:hidden;margin-top:9px;position:relative}
+.sbar i{display:block;height:100%;border-radius:4px}
 
-/* route: the job's path through the shop */
-.route{display:flex;gap:3px;margin-top:11px}
-.route i{flex:1;height:5px;border-radius:3px;background:var(--line)}
+/* route */
+.route{display:flex;gap:4px;margin-top:13px}
+.route i{flex:1;height:6px;border-radius:3px;background:var(--line)}
 .route i.done{background:var(--ink)}
 .route i.now{background:var(--blue)}
 .route.risk i.now{background:var(--amber)}
 .route.late i.now{background:var(--red)}
-.rmeta{display:flex;justify-content:space-between;font-size:13px;color:var(--ink2);margin-top:7px}
+.rmeta{display:flex;justify-content:space-between;font-size:13.5px;color:var(--ink2);margin-top:8px}
 .rmeta b{font-weight:600;color:var(--ink)}
-.job{display:block;padding:14px 15px 13px}
-.job+.job{border-top:1px solid var(--line)}
-.jtop{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.jid{font-size:13px;color:var(--ink3);font-weight:500}
 
-/* jobs toolbar */
-.search{display:flex;align-items:center;gap:8px;background:#E6E8EC;border-radius:12px;padding:9px 12px;color:var(--ink3);margin-bottom:12px}
+/* jobs */
+.stages{display:flex;gap:8px;overflow-x:auto;margin:0 -16px 14px;padding:2px 16px 6px;scrollbar-width:none}
+.stages::-webkit-scrollbar{display:none}
+.stg{flex:none;min-width:104px;padding:12px 13px;text-align:left;border-radius:17px;background:var(--surface);box-shadow:var(--shadow);transition:background .2s,color .2s}
+.stg .si{width:30px;height:30px;border-radius:10px;background:var(--fill);display:grid;place-items:center;color:var(--ink2)}
+.stg .si svg{width:17px;height:17px}
+.stg .v{font-size:24px;font-weight:700;letter-spacing:-.02em;margin-top:10px;line-height:1}
+.stg .k{font-size:13px;color:var(--ink2);font-weight:500;margin-top:3px}
+.stg.on{background:var(--ink);color:#fff}
+.stg.on .k{color:rgba(255,255,255,.7)}
+.stg.on .si{background:rgba(255,255,255,.14);color:#fff}
+.search{display:flex;align-items:center;gap:9px;background:var(--surface);box-shadow:var(--shadow);border-radius:14px;padding:11px 14px;color:var(--ink3);margin-bottom:12px}
 .search input{border:0;background:none;outline:none;flex:1;font-size:16px;color:var(--ink)}
 .chips{display:flex;gap:8px;overflow-x:auto;margin:0 -16px 14px;padding:0 16px;scrollbar-width:none}
 .chips::-webkit-scrollbar{display:none}
-.chip{font-size:14px;font-weight:500;padding:7px 13px;border-radius:20px;background:var(--surface);color:var(--ink2);white-space:nowrap;border:1px solid var(--line)}
-.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-.chip b{font-weight:600;margin-left:3px;opacity:.6}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;padding:8px 14px;border-radius:20px;background:var(--surface);color:var(--ink2);white-space:nowrap;box-shadow:var(--shadow)}
+.chip.on{background:var(--blue);color:#fff}
+.chip b{font-weight:600;opacity:.6}
+.jobs{display:grid;gap:10px}
+.job{display:block;width:100%;text-align:left;padding:16px;transition:transform .12s}
+.job:active{transform:scale(.985)}
+.jtop{display:flex;align-items:center;gap:12px}
+.jid{font-size:13px;color:var(--ink3);font-weight:500}
+
+/* vendors */
+.lot{padding:16px}
+.lot+.lot{border-top:1px solid var(--line)}
+.lhead{display:flex;gap:13px;align-items:center}
+.tbar{position:relative;height:8px;border-radius:4px;background:var(--fill);margin-top:14px;overflow:visible}
+.tbar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px}
+.tbar u{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink);border-radius:1px}
+.tmeta{display:flex;justify-content:space-between;font-size:13px;color:var(--ink3);margin-top:8px}
+.lfoot{display:flex;justify-content:space-between;align-items:center;margin-top:13px;gap:10px}
+.sum3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.sum3>div{padding:14px}
+.sum3 .v{font-size:26px;font-weight:700;letter-spacing:-.025em;line-height:1;margin-top:10px}
+.sum3 .k{font-size:13px;color:var(--ink2);font-weight:500;margin-top:4px}
+.bar{height:7px;background:var(--fill);border-radius:4px;margin-top:9px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:4px;background:var(--blue)}
 
 /* money */
-.hero{background:var(--surface);border-radius:var(--r);padding:18px 16px 16px}
-.hero .big{font-size:40px;font-weight:700;letter-spacing:-.035em;line-height:1}
-.hero .big span{font-size:22px;color:var(--ink2);font-weight:600;letter-spacing:-.01em}
-.split{display:flex;height:10px;border-radius:5px;overflow:hidden;gap:2px;margin:16px 0 12px}
-.split i{display:block}
-.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13.5px;color:var(--ink2)}
-.legend span{display:flex;align-items:center;gap:6px}
-.legend i{width:9px;height:9px;border-radius:3px;display:block}
-.legend b{color:var(--ink);font-weight:600}
-.chart{background:var(--surface);border-radius:var(--r);padding:16px 14px 12px}
+.mhero{padding:20px;display:flex;gap:18px;align-items:center}
+.donut{width:118px;height:118px;flex:none;position:relative}
+.donut svg{width:118px;height:118px;transform:rotate(-90deg)}
+.donut b{position:absolute;inset:0;display:grid;place-items:center;text-align:center;font-size:12px;color:var(--ink3);font-weight:500;line-height:1.25}
+.donut b span{display:block;font-size:19px;color:var(--ink);font-weight:700;letter-spacing:-.02em}
+.mhero .big{font-size:34px;font-weight:700;letter-spacing:-.035em;line-height:1}
+.mhero .big small{font-size:18px;color:var(--ink2);font-weight:600;letter-spacing:0;margin-left:2px}
+.leg{display:grid;gap:7px;margin-top:12px;font-size:13.5px;color:var(--ink2)}
+.leg div{display:flex;align-items:center;gap:8px}
+.leg i{width:9px;height:9px;border-radius:3px}
+.leg b{margin-left:auto;color:var(--ink);font-weight:600}
+.chart{padding:18px 16px 14px}
 .chart svg{width:100%;height:auto;display:block}
-.bar{height:6px;background:var(--fill);border-radius:3px;margin-top:7px;overflow:hidden}
-.bar i{display:block;height:100%;background:var(--blue);border-radius:3px}
 
 /* sheet */
 .sheet-wrap{position:fixed;inset:0;z-index:50;pointer-events:none}
-.scrim{position:absolute;inset:0;background:rgba(15,22,30,.32);opacity:0;transition:opacity .25s}
-.sheet{position:absolute;left:0;right:0;bottom:0;background:var(--bg);border-radius:20px 20px 0 0;max-height:90vh;display:flex;flex-direction:column;transform:translateY(100%);transition:transform .34s cubic-bezier(.2,.8,.2,1)}
-.sheet{visibility:hidden}
+.scrim{position:absolute;inset:0;background:rgba(12,18,30,.38);opacity:0;transition:opacity .25s;backdrop-filter:blur(2px)}
+.sheet{position:absolute;left:0;right:0;bottom:0;background:var(--bg);border-radius:26px 26px 0 0;max-height:92vh;display:flex;flex-direction:column;transform:translateY(100%);visibility:hidden;transition:transform .36s cubic-bezier(.2,.8,.2,1),visibility 0s .36s}
 .sheet-wrap.open{pointer-events:auto}
-.sheet-wrap.open .sheet{visibility:visible}
 .sheet-wrap.open .scrim{opacity:1}
-.sheet-wrap.open .sheet{transform:none}
-.grab{width:38px;height:5px;border-radius:3px;background:#C9CED4;margin:8px auto 0;flex:none}
-.sh{display:flex;align-items:center;justify-content:space-between;padding:10px 16px 6px;flex:none}
-.sh h3{font-size:19px;font-weight:700;letter-spacing:-.015em}
-.close{width:32px;height:32px;border-radius:50%;background:#E3E6EA;display:grid;place-items:center;color:var(--ink2)}
+.sheet-wrap.open .sheet{transform:none;visibility:visible;transition:transform .36s cubic-bezier(.2,.8,.2,1)}
+.grab{width:38px;height:5px;border-radius:3px;background:#C5CBD4;margin:8px auto 0;flex:none}
+.sh{display:flex;align-items:center;justify-content:space-between;padding:10px 18px 8px;flex:none}
+.sh h3{font-size:20px;font-weight:700;letter-spacing:-.02em}
+.close{width:34px;height:34px;border-radius:50%;background:#DFE3EA;display:grid;place-items:center;color:var(--ink2)}
 .close svg{width:16px;height:16px}
 .sb{overflow-y:auto;padding:6px 16px calc(24px + var(--safe-b));-webkit-overflow-scrolling:touch}
 
-/* timeline in job sheet */
-.tl{background:var(--surface);border-radius:var(--r);padding:6px 16px}
-.step{display:flex;gap:14px;padding:11px 0;position:relative}
-.step .n{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);flex:none;display:grid;place-items:center;background:var(--surface);position:relative;z-index:1;color:#fff}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border-radius:18px;overflow:hidden;margin-bottom:14px;box-shadow:var(--shadow)}
+.kv div{background:var(--surface);padding:12px 15px}
+.kv span{display:block;font-size:13px;color:var(--ink3)}
+.kv b{font-weight:600;font-size:15.5px}
+.tl{padding:6px 18px}
+.step{display:flex;gap:14px;padding:11px 0;position:relative;align-items:center}
+.step .n{width:24px;height:24px;border-radius:50%;border:2px solid var(--line);flex:none;display:grid;place-items:center;background:var(--surface);position:relative;z-index:1;color:#fff}
 .step .n svg{width:12px;height:12px;stroke-width:3}
-.step:not(:last-child)::after{content:"";position:absolute;left:10px;top:33px;bottom:-11px;width:2px;background:var(--line)}
+.step:not(:last-child)::after{content:"";position:absolute;left:11px;top:35px;bottom:-11px;width:2px;background:var(--line)}
 .step.done .n{background:var(--ink);border-color:var(--ink)}
 .step.done:not(:last-child)::after{background:var(--ink)}
 .step.now .n{border-color:var(--blue);background:var(--blue-soft)}
 .step.now.risk .n{border-color:var(--amber);background:var(--amber-soft)}
 .step.now.late .n{border-color:var(--red);background:var(--red-soft)}
-.step .t{font-size:15.5px}
-.step:not(.done):not(.now) .t{color:var(--ink3)}
-.kv{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:14px}
-.kv div{background:var(--surface);padding:11px 14px}
-.kv span{display:block;font-size:13px;color:var(--ink3)}
-.kv b{font-weight:600;font-size:15.5px}
+.step:not(.done):not(.now) .t{color:var(--ink3);font-weight:500}
 
 /* certificate */
-.cert{background:#fff;border-radius:6px;padding:22px 20px;box-shadow:0 1px 0 var(--line),0 12px 30px -18px rgba(20,30,40,.35);font-size:13.5px}
+.cert{background:#fff;border-radius:8px;padding:22px 20px;box-shadow:0 1px 0 var(--line),0 16px 40px -20px rgba(20,30,40,.4);font-size:13.5px}
 .cert .ch{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid var(--ink);padding-bottom:12px;margin-bottom:14px;gap:12px}
-.cert .cn{font-size:17px;font-weight:700;letter-spacing:-.01em}
+.cert .cn{font-size:17px;font-weight:700}
 .cert .ca{color:var(--ink2);font-size:12px;margin-top:3px;line-height:1.45}
 .cert h4{font-size:15px;font-weight:700;margin-bottom:2px}
 .cert table{width:100%;border-collapse:collapse;margin:14px 0}
@@ -175,85 +218,142 @@ button.row:active{background:var(--fill)}
 .cert td{padding:8px 0;border-bottom:1px solid var(--line)}
 .cert td:not(:first-child),.cert th:not(:first-child){text-align:right}
 .cert .ok{color:var(--green);font-weight:700}
-.cert .foot{display:flex;justify-content:space-between;align-items:flex-end;margin-top:18px;color:var(--ink2);font-size:12px;gap:10px}
+.cert .foot{display:flex;justify-content:space-between;align-items:flex-end;margin-top:18px;color:var(--ink2);font-size:12px}
 .stamp{border:2px solid var(--green);color:var(--green);font-weight:700;border-radius:8px;padding:5px 10px;font-size:13px;transform:rotate(-4deg)}
 
-/* whatsapp preview */
-.wa{border-radius:var(--r);overflow:hidden;background:#EBE5DC}
-.wah{background:#0B6B5C;color:#fff;display:flex;align-items:center;gap:10px;padding:11px 14px}
-.wah .av{width:34px;height:34px;border-radius:50%;background:#fff;color:#0B6B5C;display:grid;place-items:center;font-weight:700;font-size:13px}
+/* whatsapp */
+.wa{border-radius:20px;overflow:hidden;background:#EAE3D8;box-shadow:var(--shadow)}
+.wah{background:var(--wa);color:#fff;display:flex;align-items:center;gap:10px;padding:12px 14px}
+.wah .av{width:36px;height:36px;border-radius:50%;background:#fff;color:var(--wa);display:grid;place-items:center;font-weight:700;font-size:12.5px}
 .wah b{font-weight:600;font-size:15.5px;display:block}
 .wah small{font-size:12.5px;opacity:.8}
-.wab{padding:14px 12px 10px;display:flex;flex-direction:column;gap:8px;min-height:260px}
-.msg{background:#fff;border-radius:10px 10px 10px 3px;padding:9px 11px 6px;max-width:88%;font-size:15px;line-height:1.45;white-space:pre-line;align-self:flex-start;box-shadow:0 1px 0 rgba(0,0,0,.06)}
-.msg.me{background:#D7F7C8;border-radius:10px 10px 3px 10px;align-self:flex-end}
+.wab{padding:14px 12px 10px;display:flex;flex-direction:column;gap:8px;min-height:240px}
+.msg{background:#fff;border-radius:12px 12px 12px 4px;padding:9px 12px 6px;max-width:88%;font-size:15px;line-height:1.5;white-space:pre-line;align-self:flex-start;box-shadow:0 1px 0 rgba(0,0,0,.06)}
+.msg.me{background:#D8F8C9;border-radius:12px 12px 4px 12px;align-self:flex-end}
 .msg time{display:block;text-align:right;font-size:11px;color:#8A9399;margin-top:2px}
 .qr{display:flex;flex-wrap:wrap;gap:7px;padding:2px 12px 14px}
-.qr button{background:#fff;color:#0B6B5C;font-weight:600;font-size:14px;padding:8px 12px;border-radius:18px;box-shadow:0 1px 0 rgba(0,0,0,.06)}
+.qr button{background:#fff;color:var(--wa);font-weight:600;font-size:14px;padding:8px 13px;border-radius:18px;box-shadow:0 1px 0 rgba(0,0,0,.06)}
 .typing{display:flex;gap:4px;padding:12px 14px}
 .typing i{width:7px;height:7px;border-radius:50%;background:#9AA3A8;animation:b 1s infinite}
 .typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
-@keyframes b{0%,60%,100%{opacity:.35}30%{opacity:1}}
-
-.wacard{display:flex;align-items:center;gap:14px;background:#0B6B5C;color:#fff;border-radius:var(--r);padding:16px;width:100%;text-align:left;margin-top:28px}
-.wacard .ic{background:rgba(255,255,255,.16);color:#fff;width:40px;height:40px;border-radius:12px}
-.wacard .ic svg{width:22px;height:22px}
+@keyframes b{0%,60%,100%{opacity:.3}30%{opacity:1}}
+.wacard{display:flex;align-items:center;gap:14px;background:var(--wa);color:#fff;border-radius:var(--r);padding:16px;width:100%;text-align:left;margin-top:12px;position:relative;overflow:hidden}
+.wacard .ic{background:rgba(255,255,255,.16);color:#fff}
 .wacard .d{color:rgba(255,255,255,.78)}
-.wacard .chev{color:rgba(255,255,255,.6)}
 
+/* ask */
+.askbox{display:flex;align-items:center;gap:10px;background:var(--surface);border-radius:18px;padding:8px 8px 8px 16px;box-shadow:var(--shadow)}
+.askbox input{flex:1;border:0;outline:none;background:none;font-size:16px;min-width:0}
+.askbox button{width:40px;height:40px;border-radius:13px;background:var(--blue);color:#fff;display:grid;place-items:center;flex:none}
+.sugs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.sugs button{font-size:14px;font-weight:600;padding:9px 13px;border-radius:14px;background:var(--surface);box-shadow:var(--shadow);color:var(--ink)}
+.thread{display:flex;flex-direction:column;gap:12px;margin-top:6px}
+.q{align-self:flex-end;background:var(--blue);color:#fff;padding:10px 14px;border-radius:18px 18px 5px 18px;font-weight:500;max-width:85%}
+.a{align-self:flex-start;width:100%;padding:14px 16px;border-radius:5px 20px 20px 20px}
+.a .ah{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--blue);margin-bottom:8px}
+.a .lead{font-size:16px;font-weight:600;letter-spacing:-.01em;margin-bottom:6px}
+.a .ar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:15px}
+.a .ar:first-of-type{border-top:0}
+.fab{position:fixed;right:16px;bottom:calc(var(--tab) + var(--safe-b) + 14px);z-index:30;display:flex;align-items:center;gap:8px;background:var(--ink);color:#fff;font-weight:600;font-size:15px;padding:13px 18px 13px 15px;border-radius:30px;box-shadow:0 12px 28px -10px rgba(18,26,39,.55)}
+.fab:active{transform:scale(.96)}
+
+/* quote */
+.drop{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:28px 18px;border:2px dashed #CBD2DC;border-radius:20px;background:var(--surface);cursor:pointer}
+.drop .ic{width:52px;height:52px;border-radius:16px}
+.drop .ic svg{width:26px;height:26px}
+.drawing{background:#F7F9FC;border-radius:16px;border:1px solid var(--line);padding:10px}
+.drawing svg{width:100%;height:auto;display:block}
+.chk{display:flex;align-items:center;gap:10px;padding:8px 0;font-size:15px;color:var(--ink3);transition:color .2s}
+.chk .cc{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;flex:none;color:#fff}
+.chk .cc svg{width:12px;height:12px;stroke-width:3}
+.chk.ok{color:var(--ink)}
+.chk.ok .cc{background:var(--green);border-color:var(--green)}
+.chk.run .cc{border-color:var(--blue);border-right-color:transparent;animation:r .7s linear infinite}
+.spec{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border-radius:16px;overflow:hidden}
+.spec div{background:var(--surface);padding:10px 14px}
+.spec span{display:block;font-size:12.5px;color:var(--ink3)}
+.spec b{font-weight:600;font-size:15px}
+.cost .ar{display:flex;justify-content:space-between;padding:10px 0;border-top:1px solid var(--line);font-size:15px}
+.cost .ar:first-child{border-top:0}
+.cost .ar span:last-child{font-weight:600}
+.cost .tot{display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;margin-top:4px;border-top:2px solid var(--ink)}
+.cost .tot b{font-size:28px;letter-spacing:-.03em}
+
+/* scan */
+.vf{position:relative;aspect-ratio:1/1;max-width:340px;margin:4px auto 0;border-radius:26px;background:#0F1726;overflow:hidden;display:grid;place-items:center}
+.vf .cn{position:absolute;width:44px;height:44px;border:4px solid #fff;border-radius:6px}
+.vf .c1{top:24px;left:24px;border-right:0;border-bottom:0}.vf .c2{top:24px;right:24px;border-left:0;border-bottom:0}.vf .c3{bottom:24px;left:24px;border-right:0;border-top:0}.vf .c4{bottom:24px;right:24px;border-left:0;border-top:0}
+.vf .line{position:absolute;left:30px;right:30px;height:2px;background:#6EE7A0;box-shadow:0 0 18px 3px rgba(110,231,160,.55);animation:scan 1.4s ease-in-out infinite}
+@keyframes scan{0%{top:32%}50%{top:68%}100%{top:32%}}
+.jc{background:#fff;border-radius:14px;padding:14px 16px;width:62%;transform:rotate(-3deg);box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.jc .qrc{width:64px;height:64px;margin-bottom:8px}
+
+.mini{display:none;width:100%;text-align:left;padding:16px 18px;margin-top:12px}
+.msplit{display:flex;gap:3px;height:8px;margin-top:12px}.msplit i{border-radius:4px;display:block}
 /* tab bar */
-.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(248,249,250,.86);backdrop-filter:saturate(1.8) blur(20px);-webkit-backdrop-filter:saturate(1.8) blur(20px);border-top:1px solid rgba(0,0,0,.07);display:flex;padding:6px 6px calc(6px + var(--safe-b))}
-.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 0;color:var(--ink3);font-size:11px;font-weight:500;position:relative}
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(246,248,251,.86);backdrop-filter:saturate(1.8) blur(22px);-webkit-backdrop-filter:saturate(1.8) blur(22px);border-top:1px solid rgba(0,0,0,.06);display:flex;padding:7px 6px calc(7px + var(--safe-b))}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:3px 0;color:var(--ink3);font-size:11px;font-weight:600;position:relative}
 .tab.on{color:var(--blue)}
-.tab .pip{position:absolute;top:1px;left:calc(50% + 8px);min-width:16px;height:16px;border-radius:8px;background:var(--red);color:#fff;font-size:10.5px;font-weight:700;display:grid;place-items:center;padding:0 4px}
+.pip{position:absolute;top:0;left:calc(50% + 8px);min-width:17px;height:17px;border-radius:9px;background:var(--red);color:#fff;font-size:10.5px;font-weight:700;display:grid;place-items:center;padding:0 4px;border:2px solid #F6F8FB}
 
-.toast{position:fixed;left:50%;bottom:calc(var(--tab) + var(--safe-b) + 18px);transform:translate(-50%,20px);background:var(--ink);color:#fff;padding:11px 16px;border-radius:13px;font-size:14.5px;font-weight:500;display:flex;gap:8px;align-items:center;opacity:0;transition:all .25s;z-index:60;pointer-events:none;max-width:calc(100% - 32px)}
+.toast{position:fixed;left:50%;bottom:calc(var(--tab) + var(--safe-b) + 20px);transform:translate(-50%,20px);background:var(--ink);color:#fff;padding:12px 17px;border-radius:15px;font-size:14.5px;font-weight:500;display:flex;gap:9px;align-items:center;opacity:0;transition:all .25s;z-index:60;pointer-events:none;max-width:calc(100% - 32px)}
 .toast.show{opacity:1;transform:translate(-50%,0)}
-.toast svg{color:#7EE2A2;width:18px;height:18px}
-.empty{padding:28px 16px;text-align:center;color:var(--ink3);font-size:15px}
-.note{font-size:13px;color:var(--ink3);text-align:center;margin:30px 0 0}
-.spin{width:16px;height:16px;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:r .7s linear infinite}
+.toast svg{color:#6EE7A0;width:18px;height:18px}
+.spin{width:16px;height:16px;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:r .7s linear infinite;display:inline-block}
 @keyframes r{to{transform:rotate(360deg)}}
-.two>*+*{margin-top:0}
+.empty{padding:30px;text-align:center;color:var(--ink3)}
+.red-t{color:var(--red)}.amb-t{color:var(--amber)}.grn-t{color:var(--green)}.mut{color:var(--ink3)}
+.mt{margin-top:12px}
+.rise{animation:rise .5s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
 /* desktop */
-@media (min-width:960px){
+@media (min-width:980px){
   .tabbar{display:none}
-  .side{display:flex;flex-direction:column;position:fixed;top:0;bottom:0;left:0;width:236px;padding:26px 14px;background:var(--surface);border-right:1px solid var(--line)}
-  .brand{padding:0 10px 26px}
-  .brand b{display:block;font-size:17px;font-weight:700;letter-spacing:-.015em}
-  .brand span{font-size:13.5px;color:var(--ink3)}
-  .nav{display:flex;align-items:center;gap:11px;padding:10px 10px;border-radius:10px;font-size:15.5px;font-weight:500;color:var(--ink2);width:100%;text-align:left}
+  .side{display:flex;flex-direction:column;position:fixed;top:0;bottom:0;left:0;width:248px;padding:24px 14px;background:var(--surface);border-right:1px solid var(--line)}
+  .brand{display:flex;gap:11px;align-items:center;padding:0 8px 28px}
+  .brand b{display:block;font-size:15.5px;font-weight:700;letter-spacing:-.015em}
+  .brand span span{font-size:13px;color:var(--ink3)}
+  .nav{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:12px;font-size:15.5px;font-weight:600;color:var(--ink2);width:100%;text-align:left}
   .nav:hover{background:var(--fill)}
   .nav.on{background:var(--blue-soft);color:var(--blue)}
-  .nav .pip{margin-left:auto;background:var(--red);color:#fff;font-size:11.5px;font-weight:700;border-radius:9px;padding:1px 7px}
-  .side .by{margin-top:auto;padding:0 10px;font-size:12.5px;color:var(--ink3)}
-  main{margin-left:236px;max-width:none;padding:30px 40px 60px}
-  .view{max-width:1080px}
-  .top .co{display:none}
-  .top{justify-content:flex-end;height:0;margin:0}
-  .two{display:grid;grid-template-columns:1fr 1fr;gap:0 24px;align-items:start}
-  .stats{grid-template-columns:repeat(4,1fr)}
-  .toast{bottom:28px}
-  .sheet{left:50%;right:auto;bottom:auto;top:50%;width:560px;max-height:86vh;border-radius:20px;transform:translate(-50%,-46%) scale(.98);opacity:0;transition:transform .28s cubic-bezier(.2,.8,.2,1),opacity .2s}
-  .sheet-wrap.open .sheet{transform:translate(-50%,-50%);opacity:1}
+  .nav .np{margin-left:auto;background:var(--red);color:#fff;font-size:11.5px;font-weight:700;border-radius:9px;padding:1px 7px}
+  .side .by{margin-top:auto;padding:0 10px;font-size:12.5px;color:var(--ink3);display:grid;gap:10px;justify-items:start}
+  main{margin-left:248px;max-width:none;padding:30px 44px 80px}
+  .view{max-width:1120px}
+  .top .pill{display:none}
+  .dgrid{display:grid;grid-template-columns:1.35fr 1fr;gap:22px;align-items:start}
+  .dgrid h2:first-child{margin-top:0}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:0 22px;align-items:start}
+  .rings{display:grid;grid-template-columns:repeat(3,1fr);margin:0;padding:0;overflow:visible}
+  .mc{width:auto}
+  .jobs{grid-template-columns:1fr 1fr}
+  .stages{margin:0 0 14px;padding:2px 0 6px;display:grid;grid-template-columns:repeat(5,1fr)}
+  .chips{margin:0 0 14px;padding:0}
+  .fab{bottom:28px;right:32px}
+  .toast{bottom:30px}
+  .sheet{left:50%;right:auto;bottom:auto;top:50%;width:580px;max-height:88vh;border-radius:26px;transform:translate(-50%,-46%) scale(.98);opacity:0;transition:transform .3s cubic-bezier(.2,.8,.2,1),opacity .2s,visibility 0s .3s}
+  .sheet-wrap.open .sheet{transform:translate(-50%,-50%);opacity:1;transition:transform .3s cubic-bezier(.2,.8,.2,1),opacity .2s}
   .grab{display:none}
-  .sh{padding-top:16px}
-  .wacard{max-width:none}
+  .sh{padding-top:18px}
+  .qa{margin-top:0}
+  .mini{display:block}
+  .brand b{color:var(--ink)}
+  .hero .big{font-size:56px}
+  .hero .spark{width:200px;height:70px;right:22px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-<div class="app">
-  <aside class="side">
-    <div class="brand"><b>Inland Machine Tools</b><span>Production, both plants</span></div>
-    <div id="sidenav"></div>
-    <div class="by">Sample data. Built by KaptainX</div>
-  </aside>
-  <main id="main"></main>
-  <nav class="tabbar" id="tabbar"></nav>
-</div>
+<aside class="side">
+  <div class="brand"><span class="avatar">IMT</span><span><b>Inland Machine Tools</b><span>Bhosari and Chinchwad</span></span></div>
+  <div id="sidenav"></div>
+  <div class="by"><span class="pill">Sample data</span><span>Powered by KaptainX</span></div>
+</aside>
+<main id="main"></main>
+<button class="fab" data-ask aria-label="Ask IMT"></button>
+<nav class="tabbar" id="tabbar"></nav>
 <div class="sheet-wrap" id="sheet" aria-hidden="true">
   <div class="scrim" data-close></div>
   <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="shTitle">
@@ -266,12 +366,13 @@ button.row:active{background:var(--fill)}
 
 <script>
 const P={
- today:'<path d="M4 16a8 8 0 1 1 16 0"/><path d="M12 16l4.5-5"/><path d="M4 20h16"/>',
+ today:'<path d="M3.5 11.5L12 4l8.5 7.5"/><path d="M5.5 10v9.5h13V10"/><path d="M10 19.5v-5h4v5"/>',
  jobs:'<path d="M12 2.8l8 4.6v9.2l-8 4.6-8-4.6V7.4z"/><circle cx="12" cy="12" r="3.2"/>',
  vendors:'<path d="M2.5 6h11.5v10H2.5z"/><path d="M14 9.5h4.2l3.3 3.3V16H14"/><circle cx="6.5" cy="17.5" r="1.9"/><circle cx="17.5" cy="17.5" r="1.9"/>',
  money:'<path d="M6.5 4.5h11M6.5 9h11M6.5 4.5h3.5a4.3 4.3 0 0 1 0 8.6H6.5l7.5 7.4"/>',
  quality:'<circle cx="12" cy="12" r="8.6"/><path d="M8.3 12.3l2.5 2.5 5-5.2"/>',
  chat:'<path d="M3.8 20.2l1.4-4A8.4 8.4 0 1 1 8.1 19z"/>',
+ ask:'<path d="M3.8 20.2l1.4-4A8.4 8.4 0 1 1 8.1 19z"/><path d="M9.5 9.8a2.6 2.6 0 1 1 3.4 2.5c-.6.2-.9.7-.9 1.3v.4M12 16.6v.1"/>',
  alert:'<path d="M12 3.8l9 15.8H3z"/><path d="M12 10v4.2M12 17.2v.1"/>',
  clock:'<circle cx="12" cy="12" r="8.6"/><path d="M12 7.4V12l3 2"/>',
  box:'<path d="M3.8 7.4L12 3.8l8.2 3.6v9.2L12 20.2l-8.2-3.6z"/><path d="M3.8 7.4L12 11l8.2-3.6M12 11v9.2"/>',
@@ -282,47 +383,56 @@ const P={
  doc:'<path d="M6 2.8h8.2L18.5 7v14.2H6z"/><path d="M14 2.8V7h4.5M9 12h6.5M9 16h6.5"/>',
  ruler:'<path d="M3 15.2L15.2 3 21 8.8 8.8 21z"/><path d="M7 11.2l2.1 2.1M10.1 8.1l2.1 2.1M13.2 5l2.1 2.1"/>',
  check:'<path d="M5 12.5l4.5 4.5L19 7.5"/>',
- machine:'<rect x="3" y="5" width="18" height="11" rx="2"/><path d="M7 20h10M12 16v4M7 9.5h4"/>',
- bell:'<path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 21h4"/>',
- rupee:'<circle cx="12" cy="12" r="8.6"/><path d="M8.8 8h6.4M8.8 10.6h6.4M8.8 8h2a2.6 2.6 0 0 1 0 5.2h-2l4.3 3.6"/>'
+ rupee:'<circle cx="12" cy="12" r="8.6"/><path d="M8.8 8h6.4M8.8 10.6h6.4M8.8 8h2a2.6 2.6 0 0 1 0 5.2h-2l4.3 3.6"/>',
+ scan:'<path d="M4 8V5.5A1.5 1.5 0 0 1 5.5 4H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16"/><path d="M4 12h16"/>',
+ quote:'<path d="M6 2.8h8.2L18.5 7v14.2H6z"/><path d="M14 2.8V7h4.5"/><path d="M9.5 11.5h5M9.5 11.5h1.6a1.8 1.8 0 0 1 0 3.6H9.5l3.2 2.9M9.5 13.3h5"/>',
+ report:'<path d="M4 20V10M10 20V4M16 20v-7M21 20H3"/>',
+ upload:'<path d="M12 15V4M7.5 8.5L12 4l4.5 4.5"/><path d="M4 15v3.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V15"/>',
+ lathe:'<rect x="3" y="9" width="5" height="6" rx="1"/><path d="M8 12h12M17 9.5v5"/><path d="M3 19h18"/>',
+ flame:'<path d="M12 21c-3.6 0-6-2.4-6-5.6 0-3.4 3-5 3.4-8.4 2.4 1.4 3.3 3.4 3.1 5.4 1-.6 1.6-1.6 1.8-2.8 1.7 1.4 3.7 3.4 3.7 5.8 0 3.2-2.4 5.6-6 5.6z"/>',
+ grind:'<circle cx="9" cy="10" r="5.5"/><circle cx="9" cy="10" r="1.6"/><path d="M14 15l5.5 5.5M13 19h7"/>',
+ lens:'<circle cx="11" cy="11" r="6.6"/><path d="M20 20l-4.3-4.3M8.5 11h5M11 8.5v5"/>',
+ truck:'<path d="M2.5 6h11.5v10H2.5z"/><path d="M14 9.5h4.2l3.3 3.3V16H14"/><circle cx="6.5" cy="17.5" r="1.9"/><circle cx="17.5" cy="17.5" r="1.9"/>',
+ arrowup:'<path d="M12 19V5M6 11l6-6 6 6"/>'
 };
 const ic=(n,c='i')=>`<svg class="${c}" viewBox="0 0 24 24" aria-hidden="true">${P[n]}</svg>`;
 
 /* ---------- sample data ---------- */
 const STAGES=['Turning','Hardening','Grinding','Inspection','Dispatch'];
+const STI=['lathe','flame','grind','lens','truck'];
 const JOBS=[
  {id:'J-2602',part:'Lead screw',spec:'Ø50 × 6000 mm, double start',client:'Nichrome India',qty:1,due:'12 Nov',stage:2,st:'late',late:'2 days late',mc:'Thread whirling',op:'Santosh K.',plant:'Bhosari',hist:['28 Oct','4 Nov','10 Nov']},
- {id:'J-2598',part:'Worm shaft and wheel',spec:'Module 6, EN-24 / bronze',client:'KSB Pumps',qty:12,due:'15 Nov',stage:3,st:'risk',late:'Due tomorrow',mc:'Trimos CMM',op:'QC, Priya S.',plant:'Chinchwad',hist:['30 Oct','5 Nov','9 Nov','13 Nov']},
- {id:'J-2611',part:'Ball screw',spec:'Ø40 × 2200 mm, C3 ground',client:'Bharat Forge',qty:2,due:'18 Nov',stage:2,st:'risk',late:'Grinder is booked',mc:'Stanko ext. thread grinder',op:'Ramesh P.',plant:'Bhosari',hist:['1 Nov','8 Nov','12 Nov']},
- {id:'J-2605',part:'Machine spindle',spec:'Ø80 × 640 mm, HSK-A63',client:'Force Motors',qty:2,due:'22 Nov',stage:1,st:'risk',late:'Vendor 4 days late',mc:'At Shree Heat Treat',op:'Vendor',plant:'Chinchwad',hist:['27 Oct','3 Nov']},
- {id:'J-2590',part:'Ball screw',spec:'Ø16 × 600 mm, rolled C7',client:'Bajaj Auto',qty:25,due:'14 Nov',stage:4,st:'ok',late:'Ready to ship',mc:'Packing',op:'Dispatch, Anil',plant:'Bhosari',hist:['24 Oct','29 Oct','5 Nov','11 Nov','14 Nov']},
- {id:'J-2608',part:'ER32 collets',spec:'Spring steel, 60 pcs',client:'Tata Motors',qty:60,due:'19 Nov',stage:2,st:'ok',late:'On track',mc:'Cincinnati cyl. grinder',op:'Vikas M.',plant:'Chinchwad',hist:['3 Nov','9 Nov','13 Nov']},
- {id:'J-2620',part:'Ball screw reconditioning',spec:'Ø25 × 900 mm, regrind + new nut',client:'Kirloskar Oil Engines',qty:3,due:'20 Nov',stage:3,st:'ok',late:'On track',mc:'Ball screw test rig',op:'QC, Priya S.',plant:'Bhosari',hist:['6 Nov','—','12 Nov','14 Nov']},
- {id:'J-2617',part:'Spline shaft',spec:'Ø35 × 410 mm, 6 splines',client:'Tata Motors',qty:40,due:'28 Nov',stage:1,st:'risk',late:'Vendor 2 days late',mc:'At Pune Induction',op:'Vendor',plant:'Chinchwad',hist:['4 Nov','6 Nov']},
+ {id:'J-2598',part:'Worm shaft and wheel',spec:'Module 6, EN-24 / bronze',client:'KSB Pumps',qty:12,due:'15 Nov',stage:3,st:'risk',late:'Due tomorrow',mc:'Trimos CMM',op:'Priya S.',plant:'Chinchwad',hist:['30 Oct','5 Nov','9 Nov','13 Nov']},
+ {id:'J-2611',part:'Ball screw',spec:'Ø40 × 2200 mm, C3 ground',client:'Bharat Forge',qty:2,due:'18 Nov',stage:2,st:'risk',late:'Grinder is booked',mc:'Stanko ext. grinder',op:'Ramesh P.',plant:'Bhosari',hist:['1 Nov','8 Nov','12 Nov']},
+ {id:'J-2605',part:'Machine spindle',spec:'Ø80 × 640 mm, HSK-A63',client:'Force Motors',qty:2,due:'22 Nov',stage:1,st:'risk',late:'Vendor 4 days late',mc:'Shree Heat Treat',op:'Vendor',plant:'Chinchwad',hist:['27 Oct','3 Nov']},
+ {id:'J-2590',part:'Ball screw',spec:'Ø16 × 600 mm, rolled C7',client:'Bajaj Auto',qty:25,due:'14 Nov',stage:4,st:'ok',late:'Ready to ship',mc:'Packing',op:'Anil',plant:'Bhosari',hist:['24 Oct','29 Oct','5 Nov','11 Nov','14 Nov']},
+ {id:'J-2608',part:'ER32 collets',spec:'Spring steel',client:'Tata Motors',qty:60,due:'19 Nov',stage:2,st:'ok',late:'On track',mc:'Cincinnati grinder',op:'Vikas M.',plant:'Chinchwad',hist:['3 Nov','9 Nov','13 Nov']},
+ {id:'J-2620',part:'Ball screw reconditioning',spec:'Ø25 × 900 mm, regrind + new nut',client:'Kirloskar Oil Engines',qty:3,due:'20 Nov',stage:3,st:'ok',late:'On track',mc:'Ball screw test rig',op:'Priya S.',plant:'Bhosari',hist:['6 Nov','—','12 Nov','14 Nov']},
+ {id:'J-2617',part:'Spline shaft',spec:'Ø35 × 410 mm, 6 splines',client:'Tata Motors',qty:40,due:'28 Nov',stage:1,st:'risk',late:'Vendor 2 days late',mc:'Pune Induction Works',op:'Vendor',plant:'Chinchwad',hist:['4 Nov','6 Nov']},
  {id:'J-2614',part:'Planetary roller screw',spec:'Ø30 × 750 mm, high load',client:'Larsen & Toubro',qty:1,due:'26 Nov',stage:0,st:'ok',late:'On track',mc:'CNC lathe',op:'Sunil D.',plant:'Bhosari',hist:['12 Nov']},
- {id:'J-2622',part:'Radial lock nuts',spec:'M45 × 1.5, 200 pcs',client:'SKF India',qty:200,due:'30 Nov',stage:0,st:'ok',late:'On track',mc:'VMC',op:'Imran S.',plant:'Chinchwad',hist:['13 Nov']},
- {id:'J-2625',part:'Worm wheel',spec:'Module 8, phosphor bronze',client:'KSB Pumps',qty:4,due:'3 Dec',stage:0,st:'ok',late:'On track',mc:'Waiting for material',op:'—',plant:'Chinchwad',hist:['—']}
+ {id:'J-2622',part:'Radial lock nuts',spec:'M45 × 1.5',client:'SKF India',qty:200,due:'30 Nov',stage:0,st:'ok',late:'On track',mc:'VMC',op:'Imran S.',plant:'Chinchwad',hist:['13 Nov']},
+ {id:'J-2625',part:'Worm wheel',spec:'Module 8, phosphor bronze',client:'KSB Pumps',qty:4,due:'3 Dec',stage:0,st:'ok',late:'Waiting for bronze',mc:'—',op:'—',plant:'Chinchwad',hist:['—']}
 ];
 const MACHINES=[
- {n:'Stanko ext. thread grinder',job:'J-2611 Bharat Forge',s:'run',l:96},
- {n:'Stanko int. thread grinder',job:'J-2620 ball nut',s:'run',l:78},
- {n:'Matrix spline grinder',job:'Free from 2 pm',s:'idle',l:32},
- {n:'Cincinnati cyl. grinder',job:'J-2608 Tata collets',s:'run',l:84},
- {n:'VMC',job:'J-2622 SKF lock nuts',s:'setup',l:61},
- {n:'CNC wire cut',job:'No job loaded',s:'idle',l:12}
+ {n:'Stanko EXT',full:'Stanko external thread grinder',job:'J-2611',s:'run',l:96},
+ {n:'Cincinnati',full:'Cincinnati cylindrical grinder',job:'J-2608',s:'run',l:84},
+ {n:'Stanko INT',full:'Stanko internal thread grinder',job:'J-2620',s:'run',l:78},
+ {n:'VMC',full:'Vertical machining centre',job:'J-2622',s:'setup',l:61},
+ {n:'Matrix spline',full:'Matrix spline grinder',job:'Free 2 pm',s:'idle',l:32},
+ {n:'Wire cut',full:'CNC wire cut',job:'No job',s:'idle',l:12}
 ];
 const STOCK=[
- {n:'EN-31 bar, Ø40',have:'180 kg',need:'420 kg needed',st:'red'},
- {n:'Steel balls, 3.969 mm',have:'2,400 pcs',need:'6,000 needed',st:'red'},
- {n:'42CrMo4 bar, Ø50',have:'310 kg',need:'Enough for 3 weeks',st:'green'},
- {n:'Phosphor bronze, Ø160',have:'1 bar',need:'Order for J-2625',st:'amber'}
+ {n:'EN-31 bar Ø40',have:180,need:420,u:'kg'},
+ {n:'Steel balls 3.969',have:2400,need:6000,u:'pcs'},
+ {n:'42CrMo4 bar Ø50',have:310,need:150,u:'kg'},
+ {n:'Phosphor bronze Ø160',have:1,need:2,u:'bar'}
 ];
 const VENDORS=[
- {id:'v1',n:'Shree Heat Treat',where:'Chakan',proc:'Hardening and tempering',job:'J-2605',item:'Spindles × 2',sent:'3 Nov',prom:'10 Nov',st:'red',tag:'4 days late'},
- {id:'v2',n:'Pune Induction Works',where:'Bhosari',proc:'Induction hardening',job:'J-2617',item:'Spline shafts × 40',sent:'6 Nov',prom:'12 Nov',st:'red',tag:'2 days late'},
- {id:'v3',n:'Om Nitriders',where:'Talawade',proc:'Gas nitriding',job:'J-2619',item:'Ball nuts × 6',sent:'11 Nov',prom:'18 Nov',st:'green',tag:'Due in 4 days'},
- {id:'v4',n:'Deccan Gun Drilling',where:'Chinchwad',proc:'Deep hole drilling',job:'J-2627',item:'Hollow shafts × 2',sent:'13 Nov',prom:'20 Nov',st:'green',tag:'Due in 6 days'},
- {id:'v5',n:'Sai Black Oxide',where:'Bhosari',proc:'Black oxidising',job:'J-2588',item:'Lock nuts × 150',sent:'10 Nov',prom:'14 Nov',st:'grey',tag:'Back today'}
+ {id:'v1',n:'Shree Heat Treat',where:'Chakan',proc:'Hardening and tempering',job:'J-2605',item:'Spindles × 2',sent:'3 Nov',prom:'10 Nov',days:11,plan:7,st:'red',tag:'4 days late'},
+ {id:'v2',n:'Pune Induction Works',where:'Bhosari',proc:'Induction hardening',job:'J-2617',item:'Spline shafts × 40',sent:'6 Nov',prom:'12 Nov',days:8,plan:6,st:'red',tag:'2 days late'},
+ {id:'v5',n:'Sai Black Oxide',where:'Bhosari',proc:'Black oxidising',job:'J-2588',item:'Lock nuts × 150',sent:'10 Nov',prom:'14 Nov',days:4,plan:4,st:'blue',tag:'Back today'},
+ {id:'v3',n:'Om Nitriders',where:'Talawade',proc:'Gas nitriding',job:'J-2619',item:'Ball nuts × 6',sent:'11 Nov',prom:'18 Nov',days:3,plan:7,st:'green',tag:'Due in 4 days'},
+ {id:'v4',n:'Deccan Gun Drilling',where:'Chinchwad',proc:'Deep hole drilling',job:'J-2627',item:'Hollow shafts × 2',sent:'13 Nov',prom:'20 Nov',days:1,plan:7,st:'green',tag:'Due in 6 days'}
 ];
 const SCORE=[{n:'Om Nitriders',on:96,rej:'0.5%'},{n:'Sai Black Oxide',on:91,rej:'1.2%'},{n:'Deccan Gun Drilling',on:88,rej:'0.8%'},{n:'Pune Induction Works',on:74,rej:'2.9%'},{n:'Shree Heat Treat',on:61,rej:'4.1%'}];
 const INV=[
@@ -337,7 +447,7 @@ const INV=[
 const MONTHS=['Jun','Jul','Aug','Sep','Oct','Nov'];
 const SALES=[38.4,42.1,36.7,47.2,51.6,29.3], BUYS=[21.2,24.5,19.8,26.1,28.4,16.2];
 const CLIENTS=[{n:'Bharat Forge',v:64.2},{n:'Larsen & Toubro',v:52.8},{n:'Tata Motors',v:47.5},{n:'KSB Pumps',v:31.4},{n:'SKF India',v:22.9}];
-const BUYLIST=[{n:'Mahalaxmi Steels',w:'EN-31 and EN-24 bar',a:'₹1.84 L',d:'11 Nov'},{n:'Bharat Bearings & Balls',w:'Steel balls, 3 sizes',a:'₹0.62 L',d:'8 Nov'},{n:'Shree Heat Treat',w:'Hardening, Oct bill',a:'₹0.48 L',d:'5 Nov'}];
+const BUYLIST=[{n:'Mahalaxmi Steels',w:'EN-31 and EN-24 bar',a:'₹1.84 L',d:'11 Nov'},{n:'Bharat Bearings & Balls',w:'Steel balls, 3 sizes',a:'₹0.62 L',d:'8 Nov'},{n:'Shree Heat Treat',w:'Hardening, October',a:'₹0.48 L',d:'5 Nov'}];
 const QC=[
  {job:'J-2598',part:'Worm shaft, module 6',client:'KSB Pumps',qty:12,st:'pending'},
  {job:'J-2620',part:'Ball screw Ø25, reconditioned',client:'Kirloskar Oil Engines',qty:3,st:'pending'},
@@ -345,180 +455,202 @@ const QC=[
  {job:'J-2588',part:'Radial lock nut M40',client:'SKF India',qty:150,st:'done',no:'IMT/QC/26/0588'}
 ];
 const CERTDATA={
- 'J-2598':[['Pitch dia.','61.500 ± 0.020','61.507'],['Lead, axial pitch','18.850 ± 0.010','18.846'],['Runout','≤ 0.015','0.009'],['Bearing seat Ø','40.000 h6','39.992'],['Hardness','56–60 HRC','58'],['Surface Ra','≤ 0.8 µm','0.42']],
+ 'J-2598':[['Pitch dia.','61.500 ± 0.020','61.507'],['Axial pitch','18.850 ± 0.010','18.846'],['Runout','≤ 0.015','0.009'],['Bearing seat Ø','40.000 h6','39.992'],['Hardness','56–60 HRC','58'],['Surface Ra','≤ 0.8 µm','0.42']],
  'J-2620':[['Nominal Ø','25.000 ± 0.010','24.997'],['Lead deviation /300','≤ 0.023','0.016'],['Axial backlash','≤ 0.010','0.004'],['Runout','≤ 0.020','0.011'],['Hardness','58–62 HRC','60'],['Surface Ra','≤ 0.4 µm','0.31']],
  'J-2590':[['Nominal Ø','16.000 ± 0.010','15.996'],['Lead deviation /300','≤ 0.052','0.031'],['Axial backlash','≤ 0.020','0.008'],['Runout','≤ 0.030','0.014'],['Hardness','58–62 HRC','59'],['Surface Ra','≤ 0.8 µm','0.48']],
  'J-2588':[['Thread','M40 × 1.5, 6H','Go / no-go OK'],['Face runout','≤ 0.005','0.003'],['Bore Ø','40.000 H7','40.012'],['Hardness','28–32 HRC','30']]
 };
 const GAUGES=[
- {n:'Bore gauge, 50–160 mm',d:'Was due 6 Nov',st:'red',tag:'Overdue'},
- {n:'Micrometer, 25–50 mm',d:'Due 18 Nov',st:'amber',tag:'4 days'},
- {n:'Thread ring gauge M45 × 1.5',d:'Due 2 Dec',st:'grey',tag:'18 days'},
- {n:'Trimos CMM',d:'Due 12 Jan 2027',st:'grey',tag:'2 months'}
+ {n:'Bore gauge 50–160 mm',d:'Was due 6 Nov',st:'red',tag:'Overdue'},
+ {n:'Micrometer 25–50 mm',d:'Due 18 Nov',st:'amber',tag:'In 4 days'},
+ {n:'Thread ring gauge M45 × 1.5',d:'Due 2 Dec',st:'grey',tag:'In 18 days'},
+ {n:'Trimos CMM',d:'Due 12 Jan 2027',st:'grey',tag:'In 2 months'}
 ];
+const SPARK=[1.2,0.8,2.1,1.6,0.4,1.9,2.4];
 
 /* ---------- helpers ---------- */
 const $=s=>document.querySelector(s);
 const L=v=>'₹'+v.toFixed(2)+' L';
+const INR=v=>'₹'+Math.round(v).toLocaleString('en-IN');
 const toCollect=INV.reduce((s,i)=>s+i.a,0);
 const b1=INV.filter(i=>i.d<=30).reduce((s,i)=>s+i.a,0), b2=INV.filter(i=>i.d>30&&i.d<=45).reduce((s,i)=>s+i.a,0), b3=INV.filter(i=>i.d>45).reduce((s,i)=>s+i.a,0);
-const late=JOBS.filter(j=>j.st==='late'), risk=JOBS.filter(j=>j.st==='risk');
+const lateJ=()=>JOBS.filter(j=>j.st==='late'), riskJ=()=>JOBS.filter(j=>j.st==='risk');
 const vLate=VENDORS.filter(v=>v.st==='red');
-const pendQC=QC.filter(q=>q.st==='pending');
+const pq=()=>QC.filter(q=>q.st==='pending');
 const tone=s=>s==='late'?'red':s==='risk'?'amber':'green';
-
-function route(j){
-  return `<div class="route ${j.st}">${STAGES.map((s,i)=>`<i class="${i<j.stage?'done':i===j.stage?'now':''}"></i>`).join('')}</div>`;
-}
-function jobRow(j){
-  return `<button class="job" data-job="${j.id}" style="width:100%;text-align:left">
-   <div class="jtop"><span class="jid num">${j.id}</span><span class="badge ${tone(j.st)}">${j.late}</span></div>
-   <div class="t" style="margin-top:3px">${j.part} <span style="color:var(--ink3);font-weight:400">× ${j.qty}</span></div>
-   <div class="d trunc">${j.client}, ${j.spec}</div>
-   ${route(j)}
-   <div class="rmeta"><span><b>${STAGES[j.stage]}</b></span><span class="num">Due ${j.due}</span></div>
-  </button>`;
-}
+const HUES=[['#E8EDFD','#2A4FE0'],['#E2F4E9','#1E7D45'],['#FCF1D9','#9A6300'],['#F3E8FD','#7A3BC4'],['#E3F4F7','#0E7487'],['#FCEBE9','#B9372B']];
+const mono=n=>{const w=n.replace('&','').split(' ').filter(Boolean);const s=(w[0][0]+(w[1]?w[1][0]:w[0][1])).toUpperCase();let h=0;for(const c of n)h=(h*31+c.charCodeAt(0))%HUES.length;const[bg,fg]=HUES[h];return `<span class="mono" style="background:${bg};color:${fg}">${s}</span>`};
+const ring=(p,c,size=62,sw=6)=>{const r=(size-sw)/2,C=2*Math.PI*r;return `<svg viewBox="0 0 ${size} ${size}"><circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="var(--fill)" stroke-width="${sw}"/><circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="${c}" stroke-width="${sw}" stroke-linecap="round" stroke-dasharray="${C*p/100} ${C}"/></svg>`};
+const spark=(a,w,h)=>{const mx=Math.max(...a),pts=a.map((v,i)=>[i/(a.length-1)*w,h-4-(v/mx)*(h-10)]);const d=pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');const l=pts[pts.length-1];return `<svg class="spark" viewBox="0 0 ${w} ${h}" aria-hidden="true"><path d="${d} L${w} ${h} L0 ${h}Z" fill="rgba(255,255,255,.08)"/><path d="${d}" fill="none" stroke="#9FB2FF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="${l[0]-2}" cy="${l[1]}" r="4" fill="#fff"/></svg>`};
+const route=j=>`<div class="route ${j.st}">${STAGES.map((s,i)=>`<i class="${i<j.stage?'done':i===j.stage?'now':''}"></i>`).join('')}</div>`;
 
 /* ---------- views ---------- */
 const V={};
-V.today=()=>`
- <div class="head"><h1>Today</h1><div class="sub">Saturday, 14 November</div></div>
- <h2>Needs you <small>${5}</small></h2>
- <div class="group">
-  <button class="row" data-job="J-2602"><span class="ic red">${ic('clock')}</span><span class="grow"><span class="t">Nichrome lead screw is 2 days late</span><div class="d">J-2602, still on grinding</div></span>${ic('chev','i s chev')}</button>
-  <button class="row" data-go="vendors"><span class="ic red">${ic('vendors')}</span><span class="grow"><span class="t">Shree Heat Treat has not returned spindles</span><div class="d">J-2605, promised 10 Nov</div></span>${ic('chev','i s chev')}</button>
-  <button class="row" data-go="money"><span class="ic red">${ic('rupee')}</span><span class="grow"><span class="t">Nichrome payment at 58 days</span><div class="d">${L(2.15)}, past the 45-day MSME limit</div></span>${ic('chev','i s chev')}</button>
-  <button class="row" data-job="J-2598"><span class="ic amber">${ic('quality')}</span><span class="grow"><span class="t">KSB worm shafts due tomorrow</span><div class="d">J-2598, waiting for inspection</div></span>${ic('chev','i s chev')}</button>
-  <button class="row" data-go="quality"><span class="ic amber">${ic('ruler')}</span><span class="grow"><span class="t">Bore gauge calibration overdue</span><div class="d">Was due 6 Nov</div></span>${ic('chev','i s chev')}</button>
- </div>
-
- <h2>At a glance</h2>
- <div class="stats">
-  <button class="stat" data-go="jobs"><div class="k">${ic('jobs')}On the floor</div><div class="v num">${JOBS.length}<span>jobs</span></div><div class="f">${late.length+risk.length} need attention</div></button>
-  <button class="stat" data-go="jobs"><div class="k">${ic('clock')}Due this week</div><div class="v num">5<span>jobs</span></div><div class="f">1 ready to ship</div></button>
-  <button class="stat red" data-go="vendors"><div class="k">${ic('vendors')}At vendors</div><div class="v num">${VENDORS.length}<span>lots</span></div><div class="f">${vLate.length} overdue</div></button>
-  <button class="stat red" data-go="money"><div class="k">${ic('rupee')}To collect</div><div class="v num">₹${toCollect.toFixed(1)}<span>L</span></div><div class="f">${L(b2+b3)} overdue</div></button>
- </div>
-
- <div class="two">
+let counted=false;
+V.today=()=>{
+ const alerts=[
+  JOBS.find(j=>j.id==='J-2602').stage<4&&['red','clock','Nichrome lead screw','J-2602, on grinding','2 days late','data-job="J-2602"'],
+  ['red','vendors','Shree Heat Treat','Spindles × 2 not returned','4 days late','data-go="vendors"'],
+  ['red','rupee','Nichrome payment','₹2.15 L, past MSME limit','58 days','data-go="money"'],
+  JOBS.find(j=>j.id==='J-2598').stage<4&&['amber','quality','KSB worm shafts','J-2598, in inspection','Due tomorrow','data-job="J-2598"'],
+  ['amber','ruler','Bore gauge','Calibration','Overdue','data-go="quality"']].filter(Boolean);
+ const h=new Date().getHours(), g=h<12?'Good morning':h<17?'Good afternoon':'Good evening';
+ return `
+ <div class="top"><div class="hello"><div class="g">${g}</div><h1>Saturday, 14 Nov</h1></div><span class="pill">Sample data</span></div>
+ <div class="dgrid">
   <div>
-   <h2>Machines <small>4 of 6 busy</small></h2>
-   <div class="group flat">${MACHINES.map(m=>`<div class="row" style="display:block">
-     <div style="display:flex;align-items:center;gap:9px"><span class="dot ${m.s}"></span><span class="t grow trunc" style="font-size:15.5px">${m.n}</span><span class="num" style="font-size:14px;color:var(--ink2);font-weight:500">${m.l}%</span></div>
-     <div class="d" style="margin-left:17px">${m.job}</div>
-     <div class="load" style="margin-left:17px"><i style="width:${m.l}%;${m.s==='idle'?'background:var(--ink3)':''}"></i></div></div>`).join('')}
+   <div class="hero rise">
+    <div class="lab"><span class="live"></span>Today, both plants</div>
+    <div class="big num"><span data-count="2.40" data-dec="2" data-pre="₹">₹2.40</span><small>L</small></div>
+    <div class="cap">collected today</div>
+    ${spark(SPARK,120,52)}
+    <div class="hgrid num">
+     <div><div class="v" data-count="3">3</div><div class="k">Jobs done</div></div>
+     <div><div class="v" data-count="25">25</div><div class="k">Pcs shipped</div></div>
+     <div><div class="v">${MACHINES.filter(m=>m.s!=='idle').length}<span style="opacity:.55">/${MACHINES.length}</span></div><div class="k">Machines on</div></div>
+    </div>
    </div>
   </div>
   <div>
-   <h2>Raw material</h2>
-   <div class="group">${STOCK.map(s=>`<div class="row"><span class="ic ${s.st}">${ic('box')}</span><span class="grow"><span class="t">${s.n}</span><div class="d">${s.need}</div></span><span class="end num" style="font-weight:600">${s.have}</span></div>`).join('')}</div>
-   <button class="wacard" data-wa><span class="ic">${ic('chat')}</span><span class="grow"><span class="t" style="font-weight:600">Tonight's WhatsApp report</span><div class="d">Goes to you at 8:00 pm. Tap to preview</div></span>${ic('chev','i s chev')}</button>
+   <div class="qa">
+    <button data-scan><span class="qi c">${ic('scan')}</span>Scan job</button>
+    <button data-quote><span class="qi">${ic('quote')}</span>New quote</button>
+    <button data-ask><span class="qi">${ic('ask')}</span>Ask IMT</button>
+    <button data-job="J-2590"><span class="qi">${ic('truck')}</span>Dispatch</button>
+   </div>
+   <button class="wacard" data-wa><span class="ic">${ic('chat')}</span><span class="grow"><span class="t">Tonight's WhatsApp report</span><div class="d">Goes out at 8:00 pm</div></span>${ic('chev','i s')}</button>
+   <button class="card mini" data-go="money"><div style="display:flex;justify-content:space-between;align-items:center"><span class="d" style="margin:0;font-weight:500">To collect</span><span class="badge red">${L(b2+b3)} overdue</span></div>
+    <div class="num" style="font-size:28px;font-weight:700;letter-spacing:-.03em;margin-top:6px">${L(toCollect)}</div>
+    <div class="msplit">${[[b1,'var(--ink)'],[b2,'var(--amber)'],[b3,'var(--red)']].map(([v,c])=>`<i style="flex:${v};background:${c}"></i>`).join('')}</div></button>
+  </div>
+ </div>
+
+ <h2>Needs you <span class="cnt num">${alerts.length}</span></h2>
+ <div class="list">${alerts.map(a=>`<button class="row" ${a[5]}><span class="ic ${a[0]}">${ic(a[1])}</span><span class="grow"><span class="t trunc" style="display:block">${a[2]}</span><div class="d trunc">${a[3]}</div></span><span class="badge ${a[0]}">${a[4]}</span></button>`).join('')}</div>
+
+ <div class="two">
+  <div>
+   <h2>Machines <span class="cnt num">${MACHINES.filter(m=>m.s!=='idle').length} of ${MACHINES.length} running</span></h2>
+   <div class="rings">${MACHINES.map(m=>{const c=m.s==='run'?'var(--green)':m.s==='setup'?'var(--amber)':'#B7BFCA';return `<div class="card mc"><div class="ring">${ring(m.l,c)}<b class="num">${m.l}%</b></div><div class="nm trunc">${m.n}</div><div class="jb num trunc">${m.job}</div><div class="st" style="color:${c}"><span class="dot" style="background:${c}"></span>${m.s==='run'?'Running':m.s==='setup'?'Setup':'Idle'}</div></div>`}).join('')}</div>
+  </div>
+  <div>
+   <h2>Raw material <button class="more" data-reorder>Reorder</button></h2>
+   <div class="list">${STOCK.map(s=>{const p=Math.min(100,Math.round(s.have/s.need*100)),c=p<50?'var(--red)':p<100?'var(--amber)':'var(--green)';return `<div class="stock"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><span class="t trunc">${s.n}</span><span class="badge ${p<50?'red':p<100?'amber':'green'}">${p<50?'Reorder':p<100?'Low':'In stock'}</span></div>
+    <div class="sbar"><i style="width:${p}%;background:${c}"></i></div>
+    <div style="display:flex;justify-content:space-between;font-size:13.5px;color:var(--ink2);margin-top:7px" class="num"><span><b style="color:var(--ink)">${s.have.toLocaleString('en-IN')}</b> ${s.u} in stock</span><span>${s.need.toLocaleString('en-IN')} needed</span></div></div>`}).join('')}</div>
   </div>
  </div>`;
+};
 
-let jf='all', jq='';
+let jf='all', jq='', js=-1;
 V.jobs=()=>`
- <div class="head"><h1>Jobs</h1><div class="sub">${JOBS.length} open across both plants</div></div>
- <label class="search">${ic('search','i s')}<input id="jq" placeholder="Search part, client or job no." value="${jq}" autocomplete="off"></label>
- <div class="chips" id="chips">${[['all','All',JOBS.length],['late','Late',late.length],['risk','At risk',risk.length],['vendor','At vendor',JOBS.filter(j=>j.stage===1).length],['ship','Ready to ship',JOBS.filter(j=>j.stage===4).length]].map(([k,n,c])=>`<button class="chip ${jf===k?'on':''}" data-f="${k}">${n}<b class="num">${c}</b></button>`).join('')}</div>
- <div class="group" id="joblist"></div>
- <p class="note">Operators scan the QR code on each job card to move it to the next stage.</p>`;
+ <div class="top"><div class="hello"><div class="g">${JOBS.length} open jobs</div><h1>Jobs</h1></div><button class="avatar" style="background:var(--blue)" data-scan aria-label="Scan job card">${ic('scan')}</button></div>
+ <div class="stages" id="pipe">${STAGES.map((s,i)=>`<button class="stg ${js===i?'on':''}" data-stage="${i}"><span class="si">${ic(STI[i])}</span><div class="v num">${JOBS.filter(j=>j.stage===i).length}</div><div class="k">${s}</div></button>`).join('')}</div>
+ <label class="search">${ic('search','i s')}<input id="jq" placeholder="Search part, client or job no." value="${jq}" autocomplete="off" aria-label="Search jobs"></label>
+ <div class="chips" id="chips">${[['all','All',JOBS.length],['late','Late',lateJ().length],['risk','At risk',riskJ().length],['ok','On track',JOBS.filter(j=>j.st==='ok').length]].map(([k,n,c])=>`<button class="chip ${jf===k?'on':''}" data-f="${k}">${n} <b class="num">${c}</b></button>`).join('')}</div>
+ <div class="jobs" id="joblist"></div>`;
 function drawJobs(){
   const q=jq.trim().toLowerCase();
-  let list=JOBS.filter(j=>jf==='all'||(jf==='late'&&j.st==='late')||(jf==='risk'&&j.st==='risk')||(jf==='vendor'&&j.stage===1)||(jf==='ship'&&j.stage===4));
+  let list=JOBS.filter(j=>(jf==='all'||j.st===jf)&&(js<0||j.stage===js));
   if(q) list=list.filter(j=>(j.id+j.part+j.client+j.spec).toLowerCase().includes(q));
-  $('#joblist').innerHTML=list.length?list.map(jobRow).join(''):`<div class="empty">No jobs match “${jq}”. Try a client name or job number.</div>`;
+  $('#joblist').innerHTML=list.length?list.map(j=>`<button class="card job" data-job="${j.id}">
+   <div class="jtop">${mono(j.client)}<span class="grow"><span class="t trunc" style="display:block">${j.part} <span class="mut" style="font-weight:500">× ${j.qty}</span></span><div class="d trunc">${j.client}</div></span><span class="badge ${tone(j.st)}">${j.late}</span></div>
+   ${route(j)}
+   <div class="rmeta"><span><b>${STAGES[j.stage]}</b> <span class="mut num">${j.id}</span></span><span class="num">Due ${j.due}</span></div>
+  </button>`).join(''):`<div class="card empty">No jobs match. Try a client name or job number.</div>`;
 }
 
-const sent=new Set();
+const sent=new Set(), recv=new Set();
 V.vendors=()=>`
- <div class="head"><h1>Vendors</h1><div class="sub">${VENDORS.length} lots out for processing, ${vLate.length} overdue</div></div>
- <div class="group">${VENDORS.map(v=>`<div class="row" style="align-items:flex-start">
-   <span class="ic ${v.st==='grey'?'blue':v.st}">${ic('vendors')}</span>
-   <span class="grow"><span class="t">${v.n}</span><div class="d">${v.proc}, ${v.where}</div>
-    <div class="d" style="margin-top:6px;color:var(--ink)">${v.item} <span style="color:var(--ink3)">${v.job}</span></div>
-    <div class="d num">Sent ${v.sent}, promised ${v.prom}</div>
-    <div style="display:flex;gap:8px;align-items:center;margin-top:9px;flex-wrap:wrap"><span class="badge ${v.st}">${v.tag}</span>
-     ${v.st==='red'?`<button class="btn ${sent.has(v.id)?'done':''}" data-remind="${v.id}">${sent.has(v.id)?ic('check','i s')+'Reminder sent':ic('send','i s')+'Send reminder'}</button>`:v.st==='grey'?`<button class="btn" data-recv="${v.id}">${ic('box','i s')}Mark received</button>`:''}
-    </div></span></div>`).join('')}
+ <div class="top"><div class="hello"><div class="g">Hardening, nitriding, coating</div><h1>Vendors</h1></div></div>
+ <div class="sum3">
+  <div class="card"><span class="ic blue">${ic('vendors')}</span><div class="v num">${VENDORS.length}</div><div class="k">Lots out</div></div>
+  <div class="card"><span class="ic red">${ic('clock')}</span><div class="v num red-t">${vLate.length}</div><div class="k">Overdue</div></div>
+  <div class="card"><span class="ic green">${ic('check')}</span><div class="v num">${Math.round(SCORE.reduce((s,v)=>s+v.on,0)/SCORE.length)}%</div><div class="k">On time</div></div>
  </div>
- <h2>On-time record <small>Last 6 months</small></h2>
- <div class="group flat">${SCORE.map(s=>`<div class="row" style="display:block"><div style="display:flex;justify-content:space-between"><span class="t">${s.n}</span><span class="num" style="font-weight:600;color:${s.on<75?'var(--red)':'var(--ink)'}">${s.on}%</span></div>
-  <div class="bar"><i style="width:${s.on}%;background:${s.on<75?'var(--red)':s.on<90?'var(--ink2)':'var(--green)'}"></i></div>
-  <div class="d num" style="margin-top:6px">Rejections ${s.rej}</div></div>`).join('')}</div>
- <p class="note">Challans and ITC-04 records are created for every lot sent out.</p>`;
+ <h2>Out now</h2>
+ <div class="list">${VENDORS.map(v=>{const over=v.days>v.plan,w=Math.min(100,v.days/Math.max(v.days,v.plan)*100),mk=v.plan/Math.max(v.days,v.plan)*100;
+  return `<div class="lot"><div class="lhead">${mono(v.n)}<span class="grow"><span class="t trunc" style="display:block">${v.n}</span><div class="d trunc">${v.proc}</div></span><span class="badge ${v.st}">${v.tag}</span></div>
+  <div class="tbar"><i style="width:${w}%;background:${over?'var(--red)':v.st==='blue'?'var(--blue)':'var(--green)'}"></i><u style="left:calc(${mk}% - 1px)"></u></div>
+  <div class="tmeta num"><span>Sent ${v.sent}</span><span>Promised ${v.prom}</span></div>
+  <div class="lfoot"><span class="num" style="font-size:14.5px"><b>${v.item}</b> <span class="mut">${v.job}</span></span>
+  ${over?`<button class="btn ${sent.has(v.id)?'done':''}" data-remind="${v.id}">${sent.has(v.id)?ic('check','i s')+'Reminded':ic('send','i s')+'Remind'}</button>`:v.st==='blue'?`<button class="btn ${recv.has(v.id)?'done':'dark'}" data-recv="${v.id}">${recv.has(v.id)?ic('check','i s')+'Received':ic('box','i s')+'Receive'}</button>`:''}</div></div>`}).join('')}</div>
+ <h2>On-time record <span class="cnt">Last 6 months</span></h2>
+ <div class="list flat">${SCORE.map(s=>`<div class="row" style="display:block"><div style="display:flex;justify-content:space-between;align-items:center"><span class="t">${s.n}</span><span class="num" style="font-weight:700;color:${s.on<75?'var(--red)':'var(--ink)'}">${s.on}%</span></div>
+  <div class="bar"><i style="width:${s.on}%;background:${s.on<75?'var(--red)':s.on<90?'var(--amber)':'var(--green)'}"></i></div><div class="d num" style="margin-top:7px">${s.rej} rejected</div></div>`).join('')}</div>`;
 
 const paid=new Set();
 V.money=()=>{
- const mx=Math.max(...SALES);
- const W=320,H=150,bw=15,gap=W/6;
- const bars=MONTHS.map((m,i)=>{const x=i*gap+gap/2;const hs=SALES[i]/mx*110, hb=BUYS[i]/mx*110;
-   return `<rect x="${x-bw-1.5}" y="${125-hs}" width="${bw}" height="${hs}" rx="3" fill="var(--blue)" ${i===5?'opacity=".45"':''}/>
-   <rect x="${x+1.5}" y="${125-hb}" width="${bw}" height="${hb}" rx="3" fill="#B9C2CC" ${i===5?'opacity=".55"':''}/>
-   <text x="${x}" y="144" text-anchor="middle" font-size="11" fill="var(--ink3)">${m}</text>`}).join('');
+ const mx=Math.max(...SALES), W=330,H=170,bw=16,gap=W/6;
+ const bars=MONTHS.map((m,i)=>{const x=i*gap+gap/2,hs=SALES[i]/mx*118,hb=BUYS[i]/mx*118;
+   return `<rect x="${x-bw-2}" y="${138-hs}" width="${bw}" height="${hs}" rx="5" fill="var(--blue)" ${i===5?'opacity=".4"':''}/><rect x="${x+2}" y="${138-hb}" width="${bw}" height="${hb}" rx="5" fill="#C3CBD6" ${i===5?'opacity=".5"':''}/>
+   ${i===4?`<text x="${x-bw/2-2}" y="${132-hs}" text-anchor="middle" font-size="11" font-weight="700" fill="var(--blue)">${SALES[i]}</text>`:''}
+   <text x="${x}" y="160" text-anchor="middle" font-size="11.5" fill="var(--ink3)">${m}</text>`}).join('');
+ const segs=[[b1,'var(--ink)'],[b2,'var(--amber)'],[b3,'var(--red)']];let acc=0;const r=50,C=2*Math.PI*r;
+ const donut=`<svg viewBox="0 0 118 118">${segs.map(([v,c])=>{const len=v/toCollect*C;const s=`<circle cx="59" cy="59" r="${r}" fill="none" stroke="${c}" stroke-width="13" stroke-dasharray="${Math.max(0,len-3)} ${C}" stroke-dashoffset="${-acc}"/>`;acc+=len;return s}).join('')}</svg>`;
  return `
- <div class="head"><h1>Money</h1><div class="sub">Payments, sales and purchases</div></div>
- <div class="hero">
-  <div class="d" style="font-weight:500">To collect</div>
-  <div class="big num" style="margin-top:6px">₹${toCollect.toFixed(2)}<span> lakh</span></div>
-  <div class="split">${[[b1,'var(--ink)'],[b2,'var(--amber)'],[b3,'var(--red)']].map(([v,c])=>`<i style="flex:${v};background:${c}"></i>`).join('')}</div>
-  <div class="legend num"><span><i style="background:var(--ink)"></i>Up to 30 days <b>${L(b1)}</b></span><span><i style="background:var(--amber)"></i>31–45 <b>${L(b2)}</b></span><span><i style="background:var(--red)"></i>Over 45 <b>${L(b3)}</b></span></div>
+ <div class="top"><div class="hello"><div class="g">November</div><h1>Money</h1></div></div>
+ <div class="card mhero">
+  <div class="donut">${donut}<b><span class="num">${INV.length}</span>invoices</b></div>
+  <div class="grow"><div class="d" style="margin:0 0 6px;font-weight:500">To collect</div><div class="big num">₹${toCollect.toFixed(2)}<small>L</small></div>
+   <div class="leg num"><div><i style="background:var(--ink)"></i>Under 30 days<b>${L(b1)}</b></div><div><i style="background:var(--amber)"></i>31 to 45 days<b>${L(b2)}</b></div><div><i style="background:var(--red)"></i>Over 45 days<b>${L(b3)}</b></div></div></div>
  </div>
  <div class="two">
  <div>
- <h2>Invoices <small>Oldest first</small></h2>
- <div class="group">${INV.map(i=>{const t=i.d>45?'red':i.d>30?'amber':'grey';return `<div class="row">
-   <span class="grow"><span class="t trunc" style="display:block">${i.c}</span><div class="d num">${i.id}, ${i.d} days${i.d>45?', past MSME limit':''}</div></span>
-   <span class="end"><div class="t num">${L(i.a)}</div>${i.d>30?`<button class="btn ${paid.has(i.id)?'done':''}" style="margin-top:6px;padding:5px 10px;font-size:13px" data-pay="${i.id}">${paid.has(i.id)?'Reminded':'Remind'}</button>`:`<span class="badge grey" style="margin-top:6px">Not due</span>`}</span></div>`}).join('')}
- </div>
+ <h2>Invoices <button class="more" data-payall>Remind all overdue</button></h2>
+ <div class="list">${INV.map(i=>`<div class="row">${mono(i.c)}<span class="grow"><span class="t trunc" style="display:block">${i.c}</span><div class="d num">${i.id} <span class="badge ${i.d>45?'red':i.d>30?'amber':'grey'}" style="margin-left:4px;padding:2px 7px">${i.d} days</span></div></span>
+  <span class="end"><div class="t num">${L(i.a)}</div>${i.d>30?`<button class="btn ${paid.has(i.id)?'done':''}" style="margin-top:7px;padding:6px 11px;font-size:13px" data-pay="${i.id}">${paid.has(i.id)?'Reminded':'Remind'}</button>`:`<div class="d" style="margin-top:7px">Not due</div>`}</span></div>`).join('')}</div>
  </div>
  <div>
- <h2>Sales and purchases <small>₹ lakh</small></h2>
- <div class="chart">
-  <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Monthly sales and purchases, June to November">
-   ${[0,1,2].map(k=>`<line x1="0" x2="${W}" y1="${15+k*55}" y2="${15+k*55}" stroke="var(--line)"/>`).join('')}
-   ${bars}
-  </svg>
-  <div class="legend num" style="margin-top:8px"><span><i style="background:var(--blue)"></i>Sales, Oct <b>₹51.6 L</b></span><span><i style="background:#B9C2CC"></i>Purchases, Oct <b>₹28.4 L</b></span></div>
+ <h2>Sales and purchases</h2>
+ <div class="card chart">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:12px"><div><div class="d" style="margin:0">October sales</div><div style="font-size:26px;font-weight:700;letter-spacing:-.03em" class="num">₹51.6 L</div></div><span class="badge green">${ic('arrowup','i xs')}9% vs Sep</span></div>
+  <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Monthly sales and purchases, June to November">${[0,1,2].map(k=>`<line x1="0" x2="${W}" y1="${20+k*59}" y2="${20+k*59}" stroke="var(--line)" stroke-dasharray="3 4"/>`).join('')}${bars}</svg>
+  <div class="leg num" style="grid-template-columns:1fr 1fr;margin-top:8px"><div><i style="background:var(--blue)"></i>Sales</div><div><i style="background:#C3CBD6"></i>Purchases</div></div>
  </div>
- <h2>Top clients <small>This year</small></h2>
- <div class="group flat">${CLIENTS.map(c=>`<div class="row" style="display:block"><div style="display:flex;justify-content:space-between"><span class="t">${c.n}</span><span class="num" style="font-weight:600">${L(c.v)}</span></div><div class="bar"><i style="width:${c.v/CLIENTS[0].v*100}%"></i></div></div>`).join('')}</div>
+ <h2>Top clients <span class="cnt">This year</span></h2>
+ <div class="list">${CLIENTS.map(c=>`<div class="row">${mono(c.n)}<span class="grow"><div style="display:flex;justify-content:space-between"><span class="t">${c.n}</span><span class="num" style="font-weight:600">${L(c.v)}</span></div><div class="bar"><i style="width:${c.v/CLIENTS[0].v*100}%"></i></div></span></div>`).join('')}</div>
  <h2>Recent purchases</h2>
- <div class="group flat">${BUYLIST.map(b=>`<div class="row"><span class="grow"><span class="t">${b.n}</span><div class="d">${b.w}</div></span><span class="end"><div class="t num">${b.a}</div><div class="d num">${b.d}</div></span></div>`).join('')}</div>
+ <div class="list">${BUYLIST.map(b=>`<div class="row">${mono(b.n)}<span class="grow"><span class="t trunc" style="display:block">${b.n}</span><div class="d trunc">${b.w}</div></span><span class="end"><div class="t num">${b.a}</div><div class="d num">${b.d}</div></span></div>`).join('')}</div>
  </div></div>`;
 };
 
 V.quality=()=>`
- <div class="head"><h1>Quality</h1><div class="sub">Inspection certificates and gauge calibration</div></div>
- <h2>Waiting for certificate <small>${pendQC.length}</small></h2>
- <div class="group">${QC.filter(q=>q.st==='pending').map(q=>`<div class="row"><span class="ic amber">${ic('doc')}</span><span class="grow"><span class="t">${q.part}</span><div class="d">${q.job}, ${q.client}, ${q.qty} pcs</div></span><button class="btn" data-gen="${q.job}">Create</button></div>`).join('')||`<div class="empty">All inspected jobs have certificates.</div>`}</div>
- <h2>Issued</h2>
- <div class="group">${QC.filter(q=>q.st==='done').map(q=>`<button class="row" data-cert="${q.job}"><span class="ic green">${ic('quality')}</span><span class="grow"><span class="t">${q.part}</span><div class="d num">${q.no}, ${q.client}</div></span>${ic('chev','i s chev')}</button>`).join('')}</div>
+ <div class="top"><div class="hello"><div class="g">Certificates and gauges</div><h1>Quality</h1></div></div>
+ <div class="sum3">
+  <div class="card"><span class="ic amber">${ic('doc')}</span><div class="v num">${pq().length}</div><div class="k">To certify</div></div>
+  <div class="card"><span class="ic green">${ic('quality')}</span><div class="v num">98.6%</div><div class="k">First pass</div></div>
+  <div class="card"><span class="ic red">${ic('ruler')}</span><div class="v num">2</div><div class="k">Gauges due</div></div>
+ </div>
+ <h2>Ready for certificate</h2>
+ <div class="list">${pq().map(q=>`<div class="row">${mono(q.client)}<span class="grow"><span class="t trunc" style="display:block">${q.part}</span><div class="d num trunc">${q.client}, ${q.qty} pcs</div></span><button class="btn dark" data-gen="${q.job}">Create</button></div>`).join('')||`<div class="empty">All inspected jobs have certificates.</div>`}</div>
+ <h2>Issued this week</h2>
+ <div class="list">${QC.filter(q=>q.st==='done').map(q=>`<button class="row" data-cert="${q.job}"><span class="ic green">${ic('quality')}</span><span class="grow"><span class="t trunc" style="display:block">${q.part}</span><div class="d num">${q.no}</div></span>${ic('chev','i s chev')}</button>`).join('')}</div>
  <h2>Gauge calibration</h2>
- <div class="group">${GAUGES.map(g=>`<div class="row"><span class="ic ${g.st==='grey'?'blue':g.st}">${ic('ruler')}</span><span class="grow"><span class="t">${g.n}</span><div class="d">${g.d}</div></span><span class="badge ${g.st}">${g.tag}</span></div>`).join('')}</div>
- <p class="note">Readings come from the Trimos CMM and test rig. Every certificate is saved against its job for ISO audits.</p>`;
+ <div class="list">${GAUGES.map(g=>`<div class="row"><span class="ic ${g.st==='grey'?'blue':g.st}">${ic('ruler')}</span><span class="grow"><span class="t trunc" style="display:block">${g.n}</span><div class="d">${g.d}</div></span><span class="badge ${g.st}">${g.tag}</span></div>`).join('')}</div>`;
 
 /* ---------- sheets ---------- */
+let sheetTimers=[];
 function openSheet(title,html){
+  sheetTimers.forEach(clearTimeout);sheetTimers=[];
   $('#shTitle').textContent=title; $('#shBody').innerHTML=html; $('#shBody').scrollTop=0;
   const s=$('#sheet'); s.classList.add('open'); s.setAttribute('aria-hidden','false');
-  setTimeout(()=>s.querySelector('.close').focus(),50);
 }
-function closeSheet(){const s=$('#sheet');s.classList.remove('open');s.setAttribute('aria-hidden','true');clearTimeout(waT)}
+function closeSheet(){const s=$('#sheet');s.classList.remove('open');s.setAttribute('aria-hidden','true');sheetTimers.forEach(clearTimeout);sheetTimers=[]}
+const later=(f,ms)=>sheetTimers.push(setTimeout(f,ms));
 
 function jobSheet(id){
   const j=JOBS.find(x=>x.id===id);
   openSheet(j.id,`
-   <div style="margin:2px 2px 14px"><div style="font-size:24px;font-weight:700;letter-spacing:-.02em">${j.part}</div><div class="d" style="font-size:15px">${j.spec}</div>
-   <div style="margin-top:10px"><span class="badge ${tone(j.st)}">${j.late}</span></div></div>
+   <div class="card" style="padding:18px;margin-bottom:12px"><div style="display:flex;gap:13px;align-items:center">${mono(j.client)}<span class="grow"><div style="font-size:21px;font-weight:700;letter-spacing:-.02em">${j.part}</div><div class="d">${j.spec}</div></span></div>
+   ${route(j)}<div class="rmeta"><span><b>${STAGES[j.stage]}</b></span><span class="badge ${tone(j.st)}">${j.late}</span></div></div>
    <div class="kv"><div><span>Client</span><b>${j.client}</b></div><div><span>Quantity</span><b class="num">${j.qty} pcs</b></div><div><span>Due</span><b class="num">${j.due}</b></div><div><span>Plant</span><b>${j.plant}</b></div><div><span>Where now</span><b>${j.mc}</b></div><div><span>Handled by</span><b>${j.op}</b></div></div>
-   <div class="tl">${STAGES.map((s,i)=>`<div class="step ${i<j.stage?'done':i===j.stage?'now '+j.st:''}"><span class="n">${i<j.stage?ic('check','i'):''}</span><span class="grow"><span class="t" style="font-weight:${i===j.stage?600:500}">${s}${i===1?' <span style="color:var(--ink3);font-weight:400">at vendor</span>':''}</span>${i<j.stage&&j.hist[i]?`<div class="d num">Done ${j.hist[i]}</div>`:i===j.stage?`<div class="d num">Started ${j.hist[i]||'today'}</div>`:''}</span></div>`).join('')}</div>
-   <div style="margin-top:16px"><button class="btn solid" data-update="${j.id}">${ic('chat','i s')}Send status to ${j.client.split(' ')[0]}</button></div>`);
+   <div class="card tl">${STAGES.map((s,i)=>`<div class="step ${i<j.stage?'done':i===j.stage?'now '+j.st:''}"><span class="n">${i<j.stage?ic('check'):''}</span><span class="grow" style="display:flex;justify-content:space-between;gap:10px"><span class="t">${s}${i===1?' <span class="mut" style="font-weight:400">at vendor</span>':''}</span><span class="num mut" style="font-size:14px">${i<=j.stage&&j.hist[i]&&j.hist[i]!=='—'?(i<j.stage?'Done ':'Started ')+j.hist[i]:''}</span></span></div>`).join('')}</div>
+   <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px"><button class="btn ghost" style="padding:14px;border-radius:15px;font-size:15px" data-update="${j.id}">${ic('chat','i s')}Update client</button>${j.stage<4?`<button class="btn solid" style="font-size:15px" data-advance="${j.id}">Move to ${STAGES[j.stage+1]}</button>`:`<button class="btn solid" style="font-size:15px" data-ship="${j.id}">${ic('truck','i s')}Ship now</button>`}</div>`);
 }
 
 function certHTML(job){
-  const q=QC.find(x=>x.job===job), rows=CERTDATA[job], no=q.no||('IMT/QC/26/0'+job.slice(-3));
+  const q=QC.find(x=>x.job===job), rows=CERTDATA[job], no=q.no;
   return `<div class="cert">
    <div class="ch"><div><div class="cn">Inland Machine Tools</div><div class="ca">Plot 176/1A, Sector 7, PCNTDA, Bhosari, Pune 411026<br>ISO 9001 certified</div></div><div style="text-align:right"><div style="font-weight:700">Inspection certificate</div><div class="ca num">${no}<br>14 Nov 2026</div></div></div>
    <h4>${q.part}</h4><div class="ca">${q.client}, job ${job}, ${q.qty} pcs</div>
@@ -527,67 +659,151 @@ function certHTML(job){
    <div class="ca">Measured on Trimos CMM and ball screw test rig. Values in mm unless noted.</div>
    <div class="foot"><div>Checked by<br><b style="color:var(--ink);font-size:13px">Priya S., QC</b></div><div class="stamp">Accepted</div></div>
   </div>
-  <div style="margin-top:16px"><button class="btn solid" data-sendcert="${q.client}">${ic('send','i s')}Email certificate to ${q.client.split(' ')[0]}</button></div>`;
+  <div style="margin-top:16px"><button class="btn solid" data-sendcert="${q.client}">${ic('send','i s')}Email to ${q.client.split(' ')[0]}</button></div>`;
 }
 function genCert(job,btn){
   btn.innerHTML='<span class="spin"></span>'; btn.disabled=true;
   setTimeout(()=>{const q=QC.find(x=>x.job===job);q.st='done';q.no='IMT/QC/26/0'+job.slice(-3);render();openSheet('Certificate',certHTML(job))},900);
 }
 
-/* WhatsApp report with replies */
-let waT;
+/* WhatsApp */
 const WA_MAIN=`*IMT daily report*
-Sat, 14 Nov
+Saturday, 14 Nov
 
-✅ 3 jobs finished today
-🚚 Shipped: 25 ball screws to Bajaj Auto
-⚠️ Late: Nichrome lead screw, 2 days
-🔧 Vendors overdue: 2 lots
-💰 Received today: ₹2.40 L
-⏳ Overdue payments: ${L(b2+b3)}, 4 clients
-📦 Reorder: EN-31 Ø40 bar, steel balls`;
+✅ 3 jobs finished
+🚚 25 ball screws shipped to Bajaj Auto
+⚠️ Nichrome lead screw is 2 days late
+🔧 2 vendor lots overdue
+💰 ₹2.40 L received today
+⏳ ${L(b2+b3)} overdue from 4 clients
+📦 Reorder EN-31 Ø40 bar and steel balls`;
 const WA_Q={
- 'Late jobs':`🔴 J-2602 Nichrome, lead screw, 2 days late. On grinding, done by Mon.
-🟡 J-2598 KSB, worm shafts, due tomorrow. In inspection.
-🟡 J-2611 Bharat Forge, ball screw. Grinder booked till Tue.`,
+ 'Late jobs':`🔴 J-2602 Nichrome lead screw, 2 days late
+🟡 J-2598 KSB worm shafts, due tomorrow
+🟡 J-2611 Bharat Forge ball screw, grinder booked`,
  'Who owes us?':INV.filter(i=>i.d>30).map(i=>`${i.d>45?'🔴':'🟡'} ${i.c}: ${L(i.a)}, ${i.d} days`).join('\n')+`\n\nReply *remind* to send all 4 reminders.`,
- 'Machine idle?':`Matrix spline grinder is free from 2 pm.\nCNC wire cut has no job loaded.\n\nJ-2625 worm wheel can start on VMC once bronze arrives.`,
- 'remind':`Done ✅ Payment reminders sent to Nichrome, Force Motors, Kirloskar and Bharat Forge.`
+ 'Free machines':`⚪ Matrix spline grinder, free from 2 pm\n⚪ CNC wire cut, no job loaded\n\nJ-2625 worm wheel can start once bronze arrives.`,
+ 'remind':`Done ✅ Reminders sent to Nichrome, Force Motors, Kirloskar and Bharat Forge.`
 };
 function waSheet(){
-  openSheet('WhatsApp preview',`<div class="wa"><div class="wah"><span class="av">IMT</span><span><b>IMT Assistant</b><small>Business account</small></span></div>
+  openSheet('WhatsApp report',`<div class="wa"><div class="wah"><span class="av">IMT</span><span><b>IMT Assistant</b><small>Business account</small></span></div>
    <div class="wab" id="wab"><div class="msg">${WA_MAIN.replace(/\*(.+?)\*/g,'<b>$1</b>')}<time>8:00 pm</time></div></div>
-   <div class="qr" id="qr">${Object.keys(WA_Q).filter(k=>k!=='remind').map(k=>`<button data-q="${k}">${k}</button>`).join('')}</div></div>
-   <p class="note" style="margin-top:14px">The owner can ask anything in plain words. Try a reply above.</p>`);
+   <div class="qr" id="qr">${['Late jobs','Who owes us?','Free machines'].map(k=>`<button data-q="${k}">${k}</button>`).join('')}</div></div>`);
 }
 function waAsk(k){
   const b=$('#wab'); if(!b) return;
-  const t=new Date(); const tm='8:0'+(1+b.children.length%8)+' pm';
+  const tm='8:0'+(1+b.children.length%8)+' pm';
   b.insertAdjacentHTML('beforeend',`<div class="msg me">${k}<time>${tm}</time></div><div class="msg typing" id="typ"><i></i><i></i><i></i></div>`);
   b.lastElementChild.scrollIntoView({block:'end',behavior:'smooth'});
-  waT=setTimeout(()=>{const ty=$('#typ');if(!ty)return;ty.outerHTML=`<div class="msg">${WA_Q[k].replace(/\*(.+?)\*/g,'<b>$1</b>')}<time>${tm}</time></div>`;
+  later(()=>{const ty=$('#typ');if(!ty)return;ty.outerHTML=`<div class="msg">${WA_Q[k].replace(/\*(.+?)\*/g,'<b>$1</b>')}<time>${tm}</time></div>`;
     if(k==='Who owes us?'&&!$('#qr [data-q="remind"]'))$('#qr').insertAdjacentHTML('afterbegin','<button data-q="remind">remind</button>');
-    if(k==='remind'){INV.filter(i=>i.d>30).forEach(i=>paid.add(i.id));}
+    if(k==='remind')INV.filter(i=>i.d>30).forEach(i=>paid.add(i.id));
     b.lastElementChild.scrollIntoView({block:'end',behavior:'smooth'})},850);
+}
+
+/* Ask IMT */
+const ASK=[
+ {k:/late|delay|behind|slow/i,q:"What's late?",a:()=>`<div class="lead">${lateJ().length} job late, ${riskJ().length} at risk</div>${[...lateJ(),...riskJ()].map(j=>`<div class="ar"><span>${j.client.split(' ')[0]} ${j.part.toLowerCase()}</span><span class="badge ${tone(j.st)}">${j.late}</span></div>`).join('')}`},
+ {k:/owe|payment|pay|receiv|collect|due money/i,q:'Who owes us money?',a:()=>`<div class="lead">${L(b2+b3)} is overdue from 4 clients</div>${INV.filter(i=>i.d>30).map(i=>`<div class="ar"><span>${i.c}</span><span class="num"><b>${L(i.a)}</b> <span class="badge ${i.d>45?'red':'amber'}">${i.d} days</span></span></div>`).join('')}<button class="btn mt" data-payall>${ic('send','i s')}Remind all 4</button>`},
+ {k:/machine|free|idle|grinder|capacity/i,q:'Which machine is free?',a:()=>`<div class="lead">2 machines are free today</div><div class="ar"><span>Matrix spline grinder</span><span class="badge grey">Free from 2 pm</span></div><div class="ar"><span>CNC wire cut</span><span class="badge grey">No job</span></div><div class="ar"><span>Stanko external grinder</span><span class="badge red">96% booked</span></div>`},
+ {k:/sale|revenue|month|october|turnover/i,q:'How were sales last month?',a:()=>`<div class="lead">October sales were ₹51.6 L, up 9% on September</div><div class="ar"><span>Purchases</span><b class="num">₹28.4 L</b></div><div class="ar"><span>Gross margin</span><b class="num grn-t">₹23.2 L</b></div><div class="ar"><span>Biggest client</span><b>Bharat Forge</b></div>`},
+ {k:/stock|material|reorder|steel|ball/i,q:'What should I reorder?',a:()=>`<div class="lead">2 items are below what open jobs need</div>${STOCK.filter(s=>s.have<s.need).map(s=>`<div class="ar"><span>${s.n}</span><span class="num">${s.have.toLocaleString('en-IN')} of ${s.need.toLocaleString('en-IN')} ${s.u}</span></div>`).join('')}<button class="btn mt" data-reorder>${ic('send','i s')}Send purchase orders</button>`},
+ {k:/vendor|heat|harden|nitrid/i,q:'Which vendors are late?',a:()=>`<div class="lead">2 vendor lots are overdue</div>${vLate.map(v=>`<div class="ar"><span>${v.n}</span><span class="badge red">${v.tag}</span></div>`).join('')}`}
+];
+function askSheet(pre){
+  openSheet('Ask IMT',`<form class="askbox" id="askf"><input id="askq" placeholder="Ask about jobs, money, machines…" autocomplete="off" aria-label="Ask a question"><button type="submit" aria-label="Ask">${ic('arrowup','i s')}</button></form>
+   <div class="sugs">${ASK.map(a=>`<button data-sug="${a.q}">${a.q}</button>`).join('')}</div><div class="thread" id="thread"></div>`);
+  $('#askf').addEventListener('submit',e=>{e.preventDefault();const v=$('#askq').value.trim();if(v){answer(v);$('#askq').value=''}});
+  if(pre) answer(pre);
+}
+function answer(q){
+  const th=$('#thread');if(!th)return;
+  const hit=ASK.find(a=>a.k.test(q));
+  th.insertAdjacentHTML('beforeend',`<div class="q rise">${q.replace(/</g,'&lt;')}</div><div class="card a rise" id="pend"><div class="ah">${ic('ask','i xs')}IMT</div><div class="typing" style="padding:4px 0"><i></i><i></i><i></i></div></div>`);
+  $('#pend').scrollIntoView({block:'end',behavior:'smooth'});
+  later(()=>{const p=$('#pend');if(!p)return;p.removeAttribute('id');p.innerHTML=`<div class="ah">${ic('ask','i xs')}IMT</div>`+(hit?hit.a():`<div class="lead">I can answer questions on jobs, payments, machines, stock and vendors.</div><div class="d">Try one of the questions above.</div>`);p.scrollIntoView({block:'end',behavior:'smooth'})},900);
+}
+
+/* Quote builder */
+const DRAW=`<svg viewBox="0 0 340 150" font-family="inherit" aria-label="Sample drawing of a ball screw">
+ <g stroke="#2A3A55" stroke-width="1.2" fill="none">
+  <rect x="20" y="62" width="34" height="26"/><rect x="54" y="58" width="22" height="34"/>
+  <rect x="76" y="56" width="200" height="38"/>
+  ${Array.from({length:25},(_,i)=>`<line x1="${80+i*8}" y1="56" x2="${86+i*8}" y2="94"/>`).join('')}
+  <rect x="276" y="62" width="26" height="26"/><rect x="302" y="66" width="20" height="18"/>
+  <path d="M20 40h302M20 36v8M322 36v8" stroke="#2A4FE0"/><path d="M76 112h200M76 108v8M276 108v8" stroke="#2A4FE0"/>
+  <path d="M290 56v-10M290 94v10" stroke="#2A4FE0" stroke-dasharray="2 2"/>
+ </g>
+ <g font-size="10" fill="#2A4FE0" text-anchor="middle" font-weight="600"><text x="171" y="33">1500</text><text x="176" y="126">Thread 1250, lead 10</text><text x="306" y="52">Ø32</text></g>
+ <g font-size="9" fill="#5B6676"><text x="20" y="142">42CrMo4, 58–62 HRC, C5 ground</text><text x="322" y="142" text-anchor="end">RFQ FM/2611, qty 4</text></g>
+</svg>`;
+const QSPEC=[['Part','Ball screw'],['Client','Force Motors'],['Nominal Ø','32 mm'],['Length','1500 mm'],['Lead','10 mm'],['Accuracy','C5 ground'],['Material','42CrMo4'],['Quantity','4 pcs']];
+const QCOST=[['Material, 18 kg bar',2610],['Turning, 2.5 h',2250],['Induction hardening',1400],['Thread grinding, 6 h',10800],['Ball nut and balls',6500],['Inspection and test rig',1200]];
+function quoteSheet(){
+  openSheet('New quote',`<div id="qz">
+   <label class="drop"><input type="file" id="qfile" accept="image/*,.pdf,.dxf,.dwg" hidden><span class="ic blue">${ic('upload')}</span><span class="t">Upload customer drawing</span><span class="d" style="margin:0">PDF, photo or CAD file</span></label>
+   <button class="btn ghost mt" style="width:100%;padding:13px;border-radius:15px" data-sample>${ic('doc','i s')}Use sample RFQ from Force Motors</button></div>`);
+  $('#qfile').addEventListener('change',e=>{if(e.target.files.length)runQuote(e.target.files[0].name)});
+}
+function runQuote(name){
+  const steps=['Reading dimensions','Finding material and hardness','Checking grinder capacity','Pricing from past jobs'];
+  $('#qz').innerHTML=`<div class="drawing">${DRAW}</div><div class="d mt" style="text-align:center">${name}</div><div class="card mt" style="padding:8px 16px" id="qsteps">${steps.map(s=>`<div class="chk"><span class="cc"></span>${s}</div>`).join('')}</div>`;
+  const els=[...document.querySelectorAll('#qsteps .chk')];
+  els.forEach((el,i)=>{later(()=>{el.classList.add('run')},i*550);later(()=>{el.classList.remove('run');el.classList.add('ok');el.querySelector('.cc').innerHTML=ic('check')},i*550+500)});
+  later(showQuote,steps.length*550+250);
+}
+function showQuote(){
+  const sub=QCOST.reduce((s,c)=>s+c[1],0), mg=Math.round(sub*.22), pc=Math.round((sub+mg)/100)*100, tot=pc*4;
+  $('#qz').innerHTML=`<div class="drawing rise">${DRAW}</div>
+   <h2 style="margin-top:20px">Read from drawing <span class="badge green">${ic('check','i xs')}8 of 8</span></h2>
+   <div class="spec rise">${QSPEC.map(s=>`<div><span>${s[0]}</span><b>${s[1]}</b></div>`).join('')}</div>
+   <h2>Cost per piece</h2>
+   <div class="card cost rise" style="padding:8px 16px 16px">${QCOST.map(c=>`<div class="ar"><span>${c[0]}</span><span class="num">${INR(c[1])}</span></div>`).join('')}<div class="ar"><span>Margin 22%</span><span class="num">${INR(mg)}</span></div>
+    <div class="tot"><span><div class="d" style="margin:0">4 pcs at ${INR(pc)}</div><b class="num">${INR(tot)}</b></span><span class="badge blue">${ic('clock','i xs')}18 days</span></div></div>
+   <button class="btn solid mt" data-sendquote>${ic('send','i s')}Send quote to Force Motors</button>`;
+}
+
+/* Scan */
+function scanSheet(){
+  const j=JOBS.find(x=>x.id==='J-2598');
+  openSheet('Scan job card',`<div class="vf"><span class="cn c1"></span><span class="cn c2"></span><span class="cn c3"></span><span class="cn c4"></span>
+   <div class="jc"><svg class="qrc" viewBox="0 0 7 7" shape-rendering="crispEdges"><path fill="#121A27" d="M0 0h3v3H0zM4 0h3v3H4zM0 4h3v3H0zM4 4h1v1H4zM6 4h1v1H6zM5 5h1v1H5zM4 6h1v1H4zM6 6h1v1H6z"/><path fill="#fff" d="M1 1h1v1H1zM5 1h1v1H5zM1 5h1v1H1z"/></svg><div style="font-weight:700;font-size:15px">${j.id}</div><div style="font-size:12px;color:var(--ink2)">${j.client}</div></div>
+   <span class="line"></span></div><div id="scanres" class="d" style="text-align:center;margin-top:16px">Point at the QR code on the job card</div>`);
+  later(()=>{const r=$('#scanres');if(!r)return;const v=document.querySelector('.vf .line');if(v)v.remove();
+   r.outerHTML=`<div class="card rise" style="padding:16px;margin-top:16px"><div style="display:flex;gap:13px;align-items:center">${mono(j.client)}<span class="grow"><div class="t">${j.part} × ${j.qty}</div><div class="d num">${j.id}, ${j.client}</div></span><span class="badge ${tone(j.st)}">${j.late}</span></div>${route(j)}<div class="rmeta"><span>Now <b>${STAGES[j.stage]}</b></span></div>
+   ${j.stage<4?`<button class="btn solid mt" data-advance="${j.id}">${ic('check','i s')}Passed. Move to ${STAGES[j.stage+1]}</button>`:''}</div>`},1700);
 }
 
 /* ---------- toast ---------- */
 let tT;
-function toast(m){const t=$('#toast');t.innerHTML=ic('check')+m;t.classList.add('show');clearTimeout(tT);tT=setTimeout(()=>t.classList.remove('show'),2300)}
+function toast(m){const t=$('#toast');t.innerHTML=ic('check')+'<span>'+m+'</span>';t.classList.add('show');clearTimeout(tT);tT=setTimeout(()=>t.classList.remove('show'),2400)}
 
 /* ---------- nav ---------- */
-const TABS=[['today','Today','today'],['jobs','Jobs','jobs',late.length+risk.length],['vendors','Vendors','vendors',vLate.length],['money','Money','money'],['quality','Quality','quality',pendQC.length]];
+const TABS=[['today','Home','today'],['jobs','Jobs','jobs'],['vendors','Vendors','vendors'],['money','Money','money'],['quality','Quality','quality']];
+const pip=k=>k==='jobs'?lateJ().length+riskJ().length:k==='vendors'?vLate.length-sent.size:k==='quality'?pq().length:0;
 let cur='today';
+function countUp(){
+  if(counted||matchMedia('(prefers-reduced-motion:reduce)').matches)return;counted=true;
+  document.querySelectorAll('[data-count]').forEach(el=>{const to=+el.dataset.count,dec=+(el.dataset.dec||0),pre=el.dataset.pre||'';const t0=performance.now();
+   const f=t=>{const p=Math.min(1,(t-t0)/900),e=1-Math.pow(1-p,3);el.textContent=pre+(to*e).toFixed(dec);if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)});
+}
 function render(){
-  $('#main').innerHTML=`<div class="top"><span class="co">Inland Machine Tools</span><span class="demo">Sample data</span></div>`+TABS.map(([k])=>`<section class="view ${k===cur?'on':''}" id="v-${k}">${k===cur?V[k]():''}</section>`).join('');
-  const pc=k=>k==='quality'?QC.filter(q=>q.st==='pending').length:TABS.find(t=>t[0]===k)[3];
-  $('#tabbar').innerHTML=TABS.map(([k,n,i])=>`<button class="tab ${k===cur?'on':''}" data-go="${k}" aria-label="${n}">${ic(i)}${n}${pc(k)?`<span class="pip num">${pc(k)}</span>`:''}</button>`).join('');
-  $('#sidenav').innerHTML=TABS.map(([k,n,i])=>`<button class="nav ${k===cur?'on':''}" data-go="${k}">${ic(i)}${n}${pc(k)?`<span class="pip num">${pc(k)}</span>`:''}</button>`).join('');
-  if(cur==='jobs'){drawJobs();const inp=$('#jq');inp.addEventListener('input',e=>{jq=e.target.value;drawJobs()})}
+  $('#main').innerHTML=TABS.map(([k])=>`<section class="view ${k===cur?'on':''}" id="v-${k}">${k===cur?V[k]():''}</section>`).join('');
+  $('#tabbar').innerHTML=TABS.map(([k,n,i])=>`<button class="tab ${k===cur?'on':''}" data-go="${k}" aria-label="${n}">${ic(i)}${n}${pip(k)>0?`<span class="pip num">${pip(k)}</span>`:''}</button>`).join('');
+  $('#sidenav').innerHTML=TABS.map(([k,n,i])=>`<button class="nav ${k===cur?'on':''}" data-go="${k}">${ic(i)}${n}${pip(k)>0?`<span class="np num">${pip(k)}</span>`:''}</button>`).join('');
+  if(cur==='jobs'){drawJobs();$('#jq').addEventListener('input',e=>{jq=e.target.value;drawJobs()})}
+  if(cur==='today')countUp();
 }
 function go(k){if(!V[k])k='today';cur=k;render();window.scrollTo({top:0});try{if(location.hash!=='#'+k)history.replaceState(null,'','#'+k)}catch(e){}}
 window.addEventListener('hashchange',()=>{const k=location.hash.slice(1);if(V[k]&&k!==cur)go(k)});
 
+function advance(id){
+  const j=JOBS.find(x=>x.id===id); if(!j||j.stage>=4)return;
+  j.stage++; j.hist[j.stage]='14 Nov';
+  if(j.stage===4){j.st='ok';j.late='Ready to ship';j.mc='Packing'}
+  else if(j.stage===3){j.mc='Trimos CMM'}
+  toast(`${j.id} moved to ${STAGES[j.stage]}`); render(); jobSheet(id);
+}
 document.addEventListener('click',e=>{
   const el=e.target.closest('button,[data-close]'); if(!el) return;
   const d=el.dataset;
@@ -595,18 +811,30 @@ document.addEventListener('click',e=>{
   if(d.go){closeSheet();go(d.go);return}
   if(d.job){jobSheet(d.job);return}
   if(d.f){jf=d.f;document.querySelectorAll('#chips .chip').forEach(c=>c.classList.toggle('on',c.dataset.f===jf));drawJobs();return}
-  if(d.remind){const v=VENDORS.find(x=>x.id===d.remind);sent.add(v.id);el.classList.add('done');el.innerHTML=ic('check','i s')+'Reminder sent';toast(`WhatsApp reminder sent to ${v.n}`);return}
-  if(d.recv){const v=VENDORS.find(x=>x.id===d.recv);el.classList.add('done');el.innerHTML=ic('check','i s')+'Received';toast(`${v.item} back from ${v.n}`);return}
+  if(d.stage){const s=+d.stage;js=js===s?-1:s;document.querySelectorAll('#pipe .stg').forEach(c=>c.classList.toggle('on',+c.dataset.stage===js));drawJobs();return}
+  if(d.remind){const v=VENDORS.find(x=>x.id===d.remind);sent.add(v.id);el.classList.add('done');el.innerHTML=ic('check','i s')+'Reminded';toast(`WhatsApp reminder sent to ${v.n}`);render();return}
+  if(d.recv){const v=VENDORS.find(x=>x.id===d.recv);recv.add(v.id);el.classList.remove('dark');el.classList.add('done');el.innerHTML=ic('check','i s')+'Received';toast(`${v.item} received from ${v.n}`);return}
   if(d.pay){paid.add(d.pay);el.classList.add('done');el.textContent='Reminded';const i=INV.find(x=>x.id===d.pay);toast(`Payment reminder sent to ${i.c}`);return}
+  if('payall' in d){INV.filter(i=>i.d>30).forEach(i=>paid.add(i.id));toast('Reminders sent to 4 clients');el.classList.add('done');el.innerHTML=ic('check','i s')+'Sent';if(cur==='money'&&!$('#sheet').classList.contains('open'))render();return}
+  if('reorder' in d){toast('Purchase orders sent for EN-31 bar and steel balls');return}
   if(d.gen){genCert(d.gen,el);return}
   if(d.cert){openSheet('Certificate',certHTML(d.cert));return}
   if(d.sendcert){toast(`Certificate emailed to ${d.sendcert}`);return}
   if(d.update){const j=JOBS.find(x=>x.id===d.update);toast(`Status sent to ${j.client} on WhatsApp`);return}
+  if(d.advance){advance(d.advance);return}
+  if(d.ship){const j=JOBS.find(x=>x.id===d.ship);toast(`Dispatch note sent to ${j.client}`);closeSheet();return}
   if('wa' in d){waSheet();return}
   if(d.q){el.remove();waAsk(d.q);return}
+  if('ask' in d){askSheet();return}
+  if(d.sug){answer(d.sug);return}
+  if('quote' in d){quoteSheet();return}
+  if('sample' in d){runQuote('RFQ_ForceMotors_BS32x1500.pdf');return}
+  if('sendquote' in d){toast('Quote sent to Force Motors');closeSheet();return}
+  if('scan' in d){scanSheet();return}
 });
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet()});
 $('.close').innerHTML=ic('x');
+$('.fab').innerHTML=ic('ask','i s')+'Ask IMT';
 go((location.hash||'').slice(1)||'today');
 </script>
 </body>
